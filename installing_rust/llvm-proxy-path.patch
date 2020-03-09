@@ -1,0 +1,11 @@
+--- rustc-llvm-proxy/src/path.rs	2020-03-09 11:09:32.810756406 +0100
++++ rustc-llvm-proxy2/src/path.rs	2020-03-09 10:56:47.977837955 +0100
+@@ -61,7 +61,7 @@
+     match read_dir(directory) {
+         Ok(files) => files
+             .filter_map(Result::ok)
+-            .find(|file| file.file_name().to_string_lossy().starts_with("libLLVM"))
++            .find(|file| file.file_name().to_string_lossy().starts_with("libLLVM."))
+             .map(|file| file.path()),
+ 
+         Err(_) => None,

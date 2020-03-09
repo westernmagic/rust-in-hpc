@@ -1,0 +1,12 @@
+--- rust-ptx-linker/Cargo.toml	2020-03-09 11:09:52.737066891 +0100
++++ rust-ptx-linker2/Cargo.toml	2020-03-09 10:56:25.194918002 +0100
+@@ -40,6 +40,9 @@
+ [dev-dependencies]
+ crate-compile-test = "0.2"
+ 
++[patch.crates-io]
++rustc-llvm-proxy = { path = "../rustc-llvm-proxy" }
++
+ [[test]]
+ name = "linker"
+ harness = false

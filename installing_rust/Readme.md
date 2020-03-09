@@ -22,7 +22,8 @@ spack install rust@1.41.0+nvptx # for stable
 # TODO: how to install ptx-linker automatically
 # TODO: how to set optimization flags for rust
 spack load rust
-# with patched rustc-llvm-proxy
+patch -u rustc-llvm-proxy/src/path.rs -i llvm-proxy-path.patch
+patch -u rust-ptx-linker/Cargo.toml -i ptx-linker.patch
 cargo install --path ./rust-ptx-linker
 # TODO: optional, currently does not work on Piz Daint (uses `mpiexec`)
 # cargo install mpirun

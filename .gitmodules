@@ -1,0 +1,6 @@
+[submodule "installing_rust/rustc-llvm-proxy"]
+	path = installing_rust/rustc-llvm-proxy
+	url = https://github.com/denzp/rustc-llvm-proxy.git
+[submodule "installing_rust/rust-ptx-linker"]
+	path = installing_rust/rust-ptx-linker
+	url = https://github.com/denzp/rust-ptx-linker.git
