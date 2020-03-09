@@ -7,7 +7,7 @@ One of the key features of Rust is the ownership model that guarantees the memor
 In the first part, the Rust will be evaluated for potential usage at CSCS. In particular, the following questions should be tackled:
 
  - [x] how to install and run Rust programs with "user access" rights on Piz Daint
- - [/] is MPI wrapper for Rust compatible with Cray’s implementation
+ - [x] is MPI wrapper for Rust compatible with Cray’s implementation
  - [ ] how to interface Rust program with numerical libraries, such as MKL, MAGMA, ScaLAPACK, cuBlasXt, etc.
  - [ ] how to write GPU-enabled application in Rust; what are the complications or simplifications comparing to the C/C++/FORTRAN GPU applications
  - [ ] how to debug and profile Rust-based programs
