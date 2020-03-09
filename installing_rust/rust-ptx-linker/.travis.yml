@@ -1,0 +1,41 @@
+language: rust
+rust: nightly
+
+jobs:
+  fast_finish: true
+  allow_failures:
+    - name: "Check with Clippy"
+  include:
+    - name: "Check with Clippy"
+      install:
+        - rustup component add clippy
+      script:
+        - cargo clippy -- --verbose
+
+    - name: "Check with Rustfmt"
+      install:
+        - rustup component add rustfmt
+      script:
+        - cargo fmt -- --check
+
+    - name: "x86_64-unknown-linux-gnu"
+      os: linux
+
+    - name: "x86_64-apple-darwin"
+      os: osx
+      osx_image: xcode10
+
+install:
+  - rustup target add nvptx64-nvidia-cuda
+
+script:
+  - cargo test --verbose
+
+notifications:
+  email:
+    on_success: never
+
+branches:
+  only:
+    - master
+    - /^v\d+\.\d+\.\d+.*$/
