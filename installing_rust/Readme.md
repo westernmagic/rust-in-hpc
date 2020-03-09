@@ -16,7 +16,7 @@ Copy `./.spack` to `${HOME}`, be careful not to overwrite you pre-existing spack
 ## Install `llvm` and `rust`
 ```bash
 module swap PrgEnv-cray PrgEnv-gnu
-spack install llvm -clang -compiler-rt -internal_unwind -libcxx +link_dylib -lld -lldb
+spack install llvm +link_dylib
 spack install rust@develop+nvptx # for master branch (~nightly)
 spack install rust@1.41.0+nvptx # for stable
 # TODO: how to install ptx-linker automatically

@@ -23,7 +23,7 @@ class Rust(Package):
     extendable = True
 
     # Rust
-    depends_on("llvm -clang -compiler-rt -internal_unwind -libcxx +link_dylib -lld -lldb")
+    depends_on("llvm +link_dylib")
     depends_on("curl")
     depends_on("git")
     depends_on("cmake", type='build')
