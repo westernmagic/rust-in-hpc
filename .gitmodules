@@ -4,3 +4,6 @@
 [submodule "installing_rust/rust-ptx-linker"]
 	path = installing_rust/rust-ptx-linker
 	url = https://github.com/denzp/rust-ptx-linker.git
+[submodule "mpi/rsmpi"]
+	path = mpi/rsmpi
+	url = https://github.com/rsmpi/rsmpi.git
