@@ -7,3 +7,6 @@
 [submodule "mpi/rsmpi"]
 	path = mpi/rsmpi
 	url = https://github.com/rsmpi/rsmpi.git
+[submodule "interop/cpp2rust/cmake-cargo"]
+	path = interop/cmake-cargo
+	url = https://github.com/AndrewGaspar/cmake-cargo.git
