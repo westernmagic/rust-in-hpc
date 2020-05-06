@@ -1,3 +1,5 @@
+use num_complex::Complex64;
+
 extern "C" {
-    pub fn zaxpy_(a: *const f64, x: *const f64, nx: *const u64, y: *mut f64, ny: *const u64);
+    pub fn zaxpy_(a: *const Complex64, x: *const Complex64, nx: *const u64, y: *mut Complex64, ny: *const u64);
 }

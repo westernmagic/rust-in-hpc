@@ -10,9 +10,10 @@ name = "python2rust"
 crate-type = ["cdylib"]
 
 [dependencies]
-pyo3 = { version = "*", features = ["extension-module"] }
+pyo3 = { version = "*", features = ["extension-module", "num-complex"] }
 ndarray = "*"
 numpy = "*"
+num-complex = "*"
 
 [package.metadata.maturin]
 requires-dist = ["numpy"]

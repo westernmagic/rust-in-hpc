@@ -1,7 +1,9 @@
 use std::slice;
+use num_complex::Complex64;
 
 #[no_mangle]
-pub extern "C" fn zaxpy(a: f64, x: *const f64, nx: usize, y: *mut f64, ny: usize) {
+pub extern "C" fn zaxpy(a: *const Complex64, x: *const Complex64, nx: usize, y: *mut Complex64, ny: usize) {
+    let a = unsafe { *a };
     let x = unsafe { slice::from_raw_parts(x, nx) };
     let y = unsafe { slice::from_raw_parts_mut(y, ny) };
 

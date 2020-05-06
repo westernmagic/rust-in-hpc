@@ -2,14 +2,14 @@ subroutine zaxpy(a, x, nx, y, ny)
     use iso_fortran_env
     implicit none
 
-    real(real64),                 intent(in)    :: a
-    real(real64),   dimension(*), intent(in)    :: x
-    integer(int64),               intent(in)    :: nx
-    real(real64),   dimension(*), intent(inout) :: y
-    integer(int64),               intent(in)    :: ny
-    integer(int64)                              :: i = 1
+    complex(real64),               intent(in)    :: a
+    complex(real64), dimension(*), intent(in)    :: x
+    integer(int64),                intent(in)    :: nx
+    complex(real64), dimension(*), intent(inout) :: y
+    integer(int64),                intent(in)    :: ny
+    integer(int64)                               :: i = 1
 
-    if (nx .ne. ny) then 
+    if (nx .ne. ny) then
         call exit(1)
     end if
 

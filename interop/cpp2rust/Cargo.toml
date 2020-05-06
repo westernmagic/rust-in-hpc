@@ -11,3 +11,4 @@ name = "zaxpy"
 crate-type = ["staticlib"]
 
 [dependencies]
+num-complex = "*"

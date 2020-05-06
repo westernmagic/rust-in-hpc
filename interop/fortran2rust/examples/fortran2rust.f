@@ -7,18 +7,18 @@ program fortran2rust
             use iso_c_binding
             implicit none
 
-            real(c_double),    value,        intent(in)    :: a
-            real(c_double),    dimension(*), intent(in)    :: x
-            integer(c_size_t), value,        intent(in)    :: nx
-            real(c_double),    dimension(*), intent(inout) :: y
-            integer(c_size_t), value,        intent(in)    :: ny
+            complex(c_double_complex),               intent(in)    :: a
+            complex(c_double_complex), dimension(*), intent(in)    :: x
+            integer(c_size_t),         value,        intent(in)    :: nx
+            complex(c_double_complex), dimension(*), intent(inout) :: y
+            integer(c_size_t),         value,        intent(in)    :: ny
         end subroutine zaxpy
     end interface
 
-    integer(int64), parameter    :: n = 3
-    real(real64)                 :: a = 10.0
-    real(real64),   dimension(n) :: x = [1.0, 2.0, 3.0]
-    real(real64),   dimension(n) :: y = [4.0, 5.0, 6.0]
+    integer(int64),  parameter    :: n = 3
+    complex(real64)               :: a = cmplx(1.0, 0.0)
+    complex(real64), dimension(n) :: x = [cmplx(1.1, 2.2), cmplx(3.3,  4.4),  cmplx(5.5,    6.6)]
+    complex(real64), dimension(n) :: y = [cmplx(7.7, 8.8), cmplx(9.9, 10.10), cmplx(11.11, 12.12)]
 
     call zaxpy(a, x, n, y, n)
 

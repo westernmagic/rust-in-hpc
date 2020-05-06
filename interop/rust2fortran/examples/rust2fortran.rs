@@ -1,13 +1,14 @@
 use rust2fortran::zaxpy_ as zaxpy;
 use ndarray::array;
+use num_complex::Complex64;
 
 fn main() {
-    let a = 10.0;
-    let x = array![1.0, 2.0, 3.0];
-    let mut y = array![4.0, 5.0, 6.0];
+    let     a = Complex64::new(1.0, 0.0);
+    let     x = array![Complex64::new(1.1, 2.2), Complex64::new(3.3,  4.4),  Complex64::new(5.5, 6.6)];
+    let mut y = array![Complex64::new(7.7, 8.8), Complex64::new(9.9, 10.10), Complex64::new(11.11, 12.12)];
 
     unsafe {
-        zaxpy(&a as *const f64, x.as_ptr(), &x.len() as *const usize as *const u64, y.as_mut_ptr(), &y.len() as *const usize as *const u64);
+        zaxpy(&a as *const Complex64, x.as_ptr(), &x.len() as *const usize as *const u64, y.as_mut_ptr(), &y.len() as *const usize as *const u64);
     };
 
     println!("{}", y);

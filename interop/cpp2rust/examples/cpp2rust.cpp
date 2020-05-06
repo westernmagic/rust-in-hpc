@@ -1,14 +1,15 @@
+#include <complex>
 #include <iostream>
 
-extern "C" void zaxpy(double a, double const * x, std::size_t nx, double * y, std::size_t ny) noexcept;
+extern "C" void zaxpy(std::complex<double> const * a, std::complex<double> const * x, std::size_t nx, std::complex<double> * y, std::size_t ny) noexcept;
 
 int main() {
 	constexpr int const n = 3;
-	double a = 10.0;
-	double x[n] = {1.0, 2.0, 3.0};
-	double y[n] = {4.0, 5.0, 6.0};
+	std::complex<double> a = {1.0, 0.0};
+	std::complex<double> x[n] = {{1.1, 2.2}, {3.3,  4.4},   {5.5,   6.6}};
+	std::complex<double> y[n] = {{7.7, 8.8}, {9.9, 10.10}, {11.11, 12.12}};
 
-	zaxpy(a, x, n, y, n);
+	zaxpy(&a, x, n, y, n);
 
 	std::cout << '['
 		<< y[0] << ", "
