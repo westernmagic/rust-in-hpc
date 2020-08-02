@@ -1,0 +1,23 @@
+[package]
+name = "stencil"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ndarray = "*"
+ndarray-npy = "*"
+anyhow = "*"
+structopt = { version = "*", features = ["paw"] }
+paw = "*"
+lazy_static = "*"
+enum-utils = "*"
+derive_more = "*"
+craypat = { path = "../craypat", optional = true }
+
+[build-dependencies]
+anyhow = "*"
+itertools = "*"
+rustc_version = "*"

@@ -10,3 +10,6 @@
 [submodule "interop/cpp2rust/cmake-cargo"]
 	path = interop/cmake-cargo
 	url = https://github.com/AndrewGaspar/cmake-cargo.git
+[submodule "cscs_beamer_style"]
+	path = cscs_beamer_style
+	url = https://github.com/eth-cscs/cscs_beamer_style.git

@@ -1,0 +1,13 @@
+[package]
+name = "craypat"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+links = "_pat_base"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[build-dependencies]
+bindgen = "*"
