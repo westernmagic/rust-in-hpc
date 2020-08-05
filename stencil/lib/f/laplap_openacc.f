@@ -6,7 +6,7 @@
 !> @author Michal Sudwoj
 !> @date 2020-07-19
 !> @licence LGPL-3.0
-subroutine diffuse_v2_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
+subroutine diffuse_laplap_openacc(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
     use, intrinsic :: iso_c_binding, only: c_float, c_size_t, c_ptr, c_associated, c_f_pointer
     use m_assert, only: assert
 
@@ -46,15 +46,14 @@ subroutine diffuse_v2_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, n
     allocate(tmp1_field(nx + 2 * num_halo, ny + 2 * num_halo))
     tmp1_field = 0.0_c_float
 
+    !$acc enter data create(in_field, out_field, tmp1_field)
+    !$acc update device(in_field)
     do iter = 1, num_iter
         ! update_halo(in_field)
-        !$omp parallel &
-        !$omp   default(none) &
-        !$omp   shared(nx, ny, nz, num_halo, num_iter, in_field_, out_field_, alpha) &
-        !$omp   private(i, j, k, iter, tmp1_field, laplap)
-        !$omp do
+        !$acc parallel
+        !$acc loop gang
         do k = 1, nz
-            !$omp simd collapse(2)
+            !$acc loop vector collapse(2)
             do j = 1 + num_halo - 1, ny + num_halo + 1
                 do i = 1 + num_halo - 1, nx + num_halo + 1
                     tmp1_field(i, j) = &
@@ -66,7 +65,7 @@ subroutine diffuse_v2_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, n
                 end do
             end do
 
-            !$omp simd collapse(2)
+            !$acc loop vector collapse(2)
             do j = 1 + num_halo, ny + num_halo
                 do i = 1 + num_halo, nx + num_halo
                     laplap = &
@@ -84,7 +83,9 @@ subroutine diffuse_v2_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, n
                 end do
             end do
         end do
-        !$omp end parallel
+        !$acc end parallel
     end do
+    !$acc update host(out_field)
+    !$acc exit data delete(in_field, out_field, tmp1_field)
     ! update_halo(out_field)
 end subroutine

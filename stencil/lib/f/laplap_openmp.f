@@ -1,12 +1,12 @@
-!> v1: inline version
+!> v0: base version
 !>
-!>   - remove `tmp1_field` and simplify math
-!>   - swap `in_field` and `out_field`
+!> Ported from stencil2d-orig.F90
 !>
+!> @author Oliver Fuhrer
 !> @author Michal Sudwoj
 !> @date 2020-07-19
 !> @licence LGPL-3.0
-subroutine diffuse_v3_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
+subroutine diffuse_laplap_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
     use, intrinsic :: iso_c_binding, only: c_float, c_size_t, c_ptr, c_associated, c_f_pointer
     use m_assert, only: assert
 
@@ -24,11 +24,8 @@ subroutine diffuse_v3_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, n
     ! local
     real(kind = c_float), pointer     :: in_field_(:, :, :)
     real(kind = c_float), pointer     :: out_field_(:, :, :)
-    real(kind = c_float), pointer     :: tmp_field(:, :, :)
-    real(kind = c_float)              :: alpha_20
-    real(kind = c_float)              :: alpha_08
-    real(kind = c_float)              :: alpha_02
-    real(kind = c_float)              :: alpha_01
+    real(kind = c_float), allocatable :: tmp1_field(:, :)
+    real(kind = c_float)              :: laplap
     integer(kind = c_size_t)          :: iter
     integer(kind = c_size_t)          :: i
     integer(kind = c_size_t)          :: j
@@ -46,45 +43,50 @@ subroutine diffuse_v3_openmp(in_field, out_field, nx, ny, nz, num_halo, alpha, n
     call c_f_pointer(in_field,  in_field_,  [nx + 2 * num_halo, ny + 2 * num_halo, nz])
     call c_f_pointer(out_field, out_field_, [nx + 2 * num_halo, ny + 2 * num_halo, nz])
 
-    alpha_20 = -20 * alpha + 1
-    alpha_08 =   8 * alpha
-    alpha_02 =  -2 * alpha
-    alpha_01 =  -1 * alpha
+    allocate(tmp1_field(nx + 2 * num_halo, ny + 2 * num_halo))
+    tmp1_field = 0.0_c_float
 
     do iter = 1, num_iter
         ! update_halo(in_field)
         !$omp parallel &
         !$omp   default(none) &
-        !$omp   shared(nx, ny, nz, num_halo, iter, num_iter, in_field_, out_field_, alpha_20, alpha_08, alpha_02, alpha_01) &
-        !$omp   private(i, j, k)
+        !$omp   shared(iter, nx, ny, nz, num_halo, num_iter, alpha) &
+        !$omp   shared(in_field_, out_field_) &
+        !$omp   private(i, j, k, laplap) &
+        !$omp   private(tmp1_field)
         !$omp do
         do k = 1, nz
             !$omp simd collapse(2)
+            do j = 1 + num_halo - 1, ny + num_halo + 1
+                do i = 1 + num_halo - 1, nx + num_halo + 1
+                    tmp1_field(i, j) = &
+                        -4.0_c_float * in_field_(i,     j,     k) &
+                        +              in_field_(i - 1, j,     k) &
+                        +              in_field_(i + 1, j,     k) &
+                        +              in_field_(i,     j - 1, k) &
+                        +              in_field_(i,     j + 1, k)
+                end do
+            end do
+
+            !$omp simd collapse(2)
             do j = 1 + num_halo, ny + num_halo
-                !!GCC$ ivdep
                 do i = 1 + num_halo, nx + num_halo
-                    out_field_(i, j, k) = &
-                        + alpha_20 * in_field_(i,     j,     k) &
-                        + alpha_08 * in_field_(i - 1, j,     k) &
-                        + alpha_08 * in_field_(i + 1, j,     k) &
-                        + alpha_08 * in_field_(i,     j - 1, k) &
-                        + alpha_08 * in_field_(i,     j + 1, k) &
-                        + alpha_02 * in_field_(i - 1, j - 1, k) &
-                        + alpha_02 * in_field_(i - 1, j + 1, k) &
-                        + alpha_02 * in_field_(i + 1, j - 1, k) &
-                        + alpha_02 * in_field_(i + 1, j + 1, k) &
-                        + alpha_01 * in_field_(i - 2, j,     k) &
-                        + alpha_01 * in_field_(i + 2, j,     k) &
-                        + alpha_01 * in_field_(i,     j - 2, k) &
-                        + alpha_01 * in_field_(i,     j + 2, k)
+                    laplap = &
+                        -4.0_c_float * tmp1_field(i,     j    ) &
+                        +              tmp1_field(i - 1, j    ) &
+                        +              tmp1_field(i + 1, j    ) &
+                        +              tmp1_field(i,     j - 1) &
+                        +              tmp1_field(i,     j + 1)
+
+                    if (iter /= num_iter) then
+                        in_field_(i, j, k) = in_field_(i, j, k) - alpha * laplap
+                    else
+                        out_field_(i, j, k) = in_field_(i, j, k) - alpha * laplap
+                    end if
                 end do
             end do
         end do
         !$omp end parallel
-
-        tmp_field => in_field_
-        in_field_ => out_field_
-        out_field_ => tmp_field
     end do
     ! update_halo(out_field)
 end subroutine

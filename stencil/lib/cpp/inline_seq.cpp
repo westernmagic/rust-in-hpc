@@ -1,11 +1,10 @@
-#include "v1_inline.hpp"
 #include "array.hpp"
 #include <cassert>
 #include <cmath>
 #include <cstddef>
 #include <utility>
 
-extern "C" void diffuse_v1_inline(
+extern "C" void diffuse_inline_seq(
 	float * in_field,
 	float * out_field,
 	std::size_t nx,

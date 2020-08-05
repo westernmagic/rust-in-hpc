@@ -6,7 +6,7 @@
 !> @author Michal Sudwoj
 !> @date 2020-07-19
 !> @licence LGPL-3.0
-subroutine diffuse_v0_base(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
+subroutine diffuse_laplap_openmp_target(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
     use, intrinsic :: iso_c_binding, only: c_float, c_size_t, c_ptr, c_associated, c_f_pointer
     use m_assert, only: assert
 
@@ -46,9 +46,24 @@ subroutine diffuse_v0_base(in_field, out_field, nx, ny, nz, num_halo, alpha, num
     allocate(tmp1_field(nx + 2 * num_halo, ny + 2 * num_halo))
     tmp1_field = 0.0_c_float
 
+    !$omp target data &
+    !$omp   map(to: in_field_) &
+    !$omp   map(from: out_field_) &
+    !$omp   map(alloc: i, j, k) &
+    !$omp   map(alloc: tmp1_field)
     do iter = 1, num_iter
         ! update_halo(in_field)
+        !$omp target teams distribute &
+        !$omp   default(none) &
+        !$omp   shared(iter, nx, ny, nz, num_halo, num_iter, alpha) &
+        !$omp   shared(in_field_, out_field_, tmp1_field) &
+        !$omp   private(i, j, k)
         do k = 1, nz
+            !$omp parallel do collapse(2) &
+            !$omp   default(none) &
+            !$omp   shared(nx, ny, num_halo, k) &
+            !$omp   shared(in_field_, tmp1_field) &
+            !$omp   private(i, j)
             do j = 1 + num_halo - 1, ny + num_halo + 1
                 do i = 1 + num_halo - 1, nx + num_halo + 1
                     tmp1_field(i, j) = &
@@ -60,6 +75,11 @@ subroutine diffuse_v0_base(in_field, out_field, nx, ny, nz, num_halo, alpha, num
                 end do
             end do
 
+            !$omp parallel do collapse(2) &
+            !$omp   default(none) &
+            !$omp   shared(iter, nx, ny, num_halo, alpha, num_iter, k) &
+            !$omp   shared(in_field_, out_field_, tmp1_field) &
+            !$omp   private(i, j, laplap)
             do j = 1 + num_halo, ny + num_halo
                 do i = 1 + num_halo, nx + num_halo
                     laplap = &
@@ -78,5 +98,6 @@ subroutine diffuse_v0_base(in_field, out_field, nx, ny, nz, num_halo, alpha, num
             end do
         end do
     end do
+    !$omp end target data
     ! update_halo(out_field)
 end subroutine

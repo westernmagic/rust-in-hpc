@@ -6,7 +6,7 @@
 !> @author Michal Sudwoj
 !> @date 2020-07-19
 !> @licence LGPL-3.0
-subroutine diffuse_v1_inline(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
+subroutine diffuse_inline_seq(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
     use, intrinsic :: iso_c_binding, only: c_float, c_size_t, c_ptr, c_associated, c_f_pointer
     use m_assert, only: assert
 
