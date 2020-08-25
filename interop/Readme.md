@@ -1,11 +1,3 @@
-# Rust interoperability with other languages
-
-For further tips and other languages see:
-
- - [The Rust FFI Omnibus](https://jakegoulding.com/rust-ffi-omnibus/)
- - [FFI examples written in Rust](https://github.com/alexcrichton/rust-ffi-examples)
- - [Foreign Function Interface](https://doc.rust-lang.org/nomicon/ffi.html) in the Rustonomicon
-
-# Cave
-
- - `num_complex::Complex<T>` [must be passed by pointer over FFI boundaries](https://rust-num.github.io/num/num_complex/struct.Complex.html)
+version https://git-lfs.github.com/spec/v1
+oid sha256:2e5bb88b986d8fe1521bde42dd4da7d2412a5253e40ca722766261d09bfd1596
+size 490

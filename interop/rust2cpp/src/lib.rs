@@ -1,9 +1,3 @@
-#![allow(non_upper_case_globals)]
-#![allow(non_camel_case_types)]
-#![allow(non_snake_case)]
-
-use num_complex::Complex;
-
-type std_complex<T> = Complex<T>;
-
-include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
+version https://git-lfs.github.com/spec/v1
+oid sha256:55c812ac15cf5c1c13cdcfce0095b5bdd72e9c83af6fd65970ace7b3323f2b14
+size 207

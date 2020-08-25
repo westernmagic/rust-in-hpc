@@ -1,18 +1,3 @@
-#include <complex>
-#include <iostream>
-
-extern "C" void zaxpy(std::complex<double> const * a, std::complex<double> const * x, std::size_t nx, std::complex<double> * y, std::size_t ny) noexcept;
-
-int main() {
-	constexpr int const n = 3;
-	std::complex<double> a = {1.0, 0.0};
-	std::complex<double> x[n] = {{1.1, 2.2}, {3.3,  4.4},   {5.5,   6.6}};
-	std::complex<double> y[n] = {{7.7, 8.8}, {9.9, 10.10}, {11.11, 12.12}};
-
-	zaxpy(&a, x, n, y, n);
-
-	std::cout << '['
-		<< y[0] << ", "
-		<< y[1] << ", "
-		<< y[2] << "]\n";
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:151549a81a508d255e0e5d09f6b7ed3e980ffdbe9e243c8b6e03274e684b4a43
+size 521

@@ -1,14 +1,3 @@
-[package]
-name = "cpp2rust"
-version = "0.1.0"
-authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
-edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-name = "zaxpy"
-crate-type = ["staticlib"]
-
-[dependencies]
-num-complex = "*"
+version https://git-lfs.github.com/spec/v1
+oid sha256:036978d19118eee20d40bb238d0020a9584120c5992bc676a38567b983f5c1d0
+size 298

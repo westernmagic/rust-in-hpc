@@ -1,34 +1,3 @@
-use blas::dgemm;
-
-fn main() {
-    let (m, n, k) = (2, 4, 3);
-    let a = vec![
-        1.0, 4.0,
-        2.0, 5.0,
-        3.0, 6.0,
-    ];
-    let b = vec![
-        1.0, 5.0,  9.0,
-        2.0, 6.0, 10.0,
-        3.0, 7.0, 11.0,
-        4.0, 8.0, 12.0,
-    ];
-    let mut c = vec![
-        2.0, 7.0,
-        6.0, 2.0,
-        0.0, 7.0,
-        4.0, 2.0,
-    ];
-    let r = vec![
-        40.0,  90.0,
-        50.0, 100.0,
-        50.0, 120.0,
-        60.0, 130.0,
-    ];
-
-    // BLAS uses i32 sizes and LDs
-    unsafe {
-        dgemm(b'N', b'N', m, n, k, 1.0, &a, m, &b, k, 1.0, &mut c, m);
-    }
-    assert_eq!(c, r);
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:91fb54a052f0508745b63e6cfb682a0bad4748eb1ce1d1c89a358825b165111a
+size 621

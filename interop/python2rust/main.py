@@ -1,14 +1,3 @@
-from python2rust import zaxpy
-
-import numpy as np
-
-def main():
-    a = 1.0 + 0.0j
-    x = np.asarray([1.1 + 2.2j, 3.3 +  4.4j,   5.5  +  6.6j])
-    y = np.asarray([7.7 + 8.8j, 9.9 + 10.10j, 11.11 + 12.12j])
-
-    zaxpy(a, x, y)
-    print(y)
-
-if __name__ == '__main__':
-    main()
+version https://git-lfs.github.com/spec/v1
+oid sha256:ee90a7d3093a4c135f106a99b441cdd17f41a194a8de2e17bc14f8988430e0af
+size 279

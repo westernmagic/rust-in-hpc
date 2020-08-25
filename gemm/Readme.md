@@ -1,17 +1,3 @@
-# Simple `dgemm` in Rust
-
-[`intel-mkl-src`](https://github.com/rust-math/intel-mkl-src) insists on downloading and installing it's own MKL, neccessitating manual passing of the linker flags in `build.rs`.
-
-It would be quite trivial to wrap this around in our own crate, akin to [`intel-mkl-src`](https://github.com/rust-math/intel-mkl-src) or [`mkl_link`](https://github.com/peterhj/libmkl_link)
-
-`zgemm` works good aswell, since Rust's `Comlex<T>` has the same layout as C's `_Complex`.
-
-## Running
-```bash
-cargo run --release --example blas
-cargo run --release --example cublas
-cargo run --release --example ndarray
-```
-
-## Sources
- - https://github.com/blas-lapack-rs/blas
+version https://git-lfs.github.com/spec/v1
+oid sha256:cc6feff2d11957f4058a33d34c5208b4321bf67144deba4093dc7152ce0f3650
+size 676
