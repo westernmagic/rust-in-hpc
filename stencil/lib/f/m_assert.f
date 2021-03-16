@@ -1,30 +1,3 @@
-module m_assert
-    implicit none
-    private
-
-    public assert
-
-    contains
-        subroutine assert(cond, msg)
-#ifdef _CRAYC
-                !DIR$ INLINEALWAYS assert
-#endif
-#ifdef __INTEL_COMPILER
-                !DIR$ ATTRIBUTES FORCEINLINE :: assert
-#endif
-            use, intrinsic :: iso_fortran_env, only: error_unit
-            implicit none
-        
-            logical,                      intent(in) :: cond
-            character(len = *), optional, intent(in) :: msg
-        
-            if (.not. cond) then
-                if (present(msg)) then
-                    write(error_unit, *) "Assertion failed:", msg
-                else
-                    write(error_unit, *) "Assertion failed"
-                end if
-                error stop
-            end if
-        end subroutine
-end module
+version https://git-lfs.github.com/spec/v1
+oid sha256:ae62d00fe098705cafae0a9e4881e33006b626f8c69d53122677145a0d76b80e
+size 816
