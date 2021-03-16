@@ -1,17 +1,23 @@
 #!/usr/bin/env python
 import os
+import argparse
 import numpy as np
 import matplotlib.pyplot as plt
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('in_field')
+    parser.add_argument('out_field')
+    args = parser.parse_args()
+
     here = os.path.dirname(os.path.abspath(__file__))
     baseline_path = here
     in_field_base = np.load(baseline_path + '/in_field_base.npy')
     out_field_base = np.load(baseline_path + '/out_field_base.npy')
 
-    path = here
-    in_field = np.load(path + '/in_field.npy')
-    out_field = np.load(path + '/out_field.npy')
+    # path = here
+    in_field = np.load(args.in_field)
+    out_field = np.load(args.out_field)
 
     fig = plt.figure()
     plt.imshow((out_field_base - out_field)[:, :, 32], origin='lower')

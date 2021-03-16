@@ -25,6 +25,7 @@ In the second part, a performance comparison between Rust and C/C++/FORTRAN will
  - [Fast Rust in 2018](https://web.archive.org/web/20180124141726/https://adamniederer.com/blog/rust-2018.html)
  - [Rust High Performance](https://www.amazon.com/Rust-High-Performance-performance-applications/dp/178839948X)
  - [Parallel Rust C++](https://parallel-rust-cpp.github.io/introduction.html)
+ - [gemm: a rabbit hole](https://bluss.github.io/rust/2016/03/28/a-gemmed-rabbit-hole/)
  - [The State of GPGPU in Rust](https://bheisler.github.io/post/state-of-gpgpu-in-rust/)
  - [How to: Run Rust code on your GPU](https://github.com/japaric-archived/nvptx#targets)
  - [Rust 2020: Scientific Rust](https://github.com/willi-kappler/rust_2020)
@@ -33,6 +34,4 @@ In the second part, a performance comparison between Rust and C/C++/FORTRAN will
  - [Using Rust as a Complement to C for Embedded Systems Software Development](https://lup.lub.lu.se/student-papers/search/publication/8938297)
  - https://publications.lib.chalmers.se/records/fulltext/219016/219016.pdf
  - [Rust in HPC](https://www.osti.gov/biblio/1485376-rust-hpc)
- - https://github.com/vks/special-fun
- - https://github.com/stainless-steel/special
- - https://github.com/rust-lang/rfcs/issues/785
+ - [Cheap tricks for high-performance Rust](https://deterministic.space/high-performance-rust.html)

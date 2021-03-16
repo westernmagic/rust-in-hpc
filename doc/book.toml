@@ -1,0 +1,6 @@
+[book]
+authors = ["Michal Sudwoj"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Rust in HPC"

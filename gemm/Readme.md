@@ -4,7 +4,7 @@
 
 It would be quite trivial to wrap this around in our own crate, akin to [`intel-mkl-src`](https://github.com/rust-math/intel-mkl-src) or [`mkl_link`](https://github.com/peterhj/libmkl_link)
 
-`zgemm` works good aswell, since Rust's `Comlex<T>` has the same layout as C's `_Complex`.
+`zgemm` works good aswell, since Rust's `Complex<T>` has the same layout as C's `_Complex`.
 
 ## Running
 ```bash

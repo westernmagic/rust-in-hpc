@@ -6,6 +6,7 @@ include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
 use std::ffi::CString;
 
+#[inline]
 pub fn region_begin(label: &str) -> Result<(), ()> {
 	unimplemented!();
 
@@ -18,6 +19,7 @@ pub fn region_begin(label: &str) -> Result<(), ()> {
 	}
 }
 
+#[inline]
 pub fn region_end() -> Result<(), ()> {
 	unimplemented!();
 
@@ -30,6 +32,7 @@ pub fn region_end() -> Result<(), ()> {
 	}
 }
 
+#[inline]
 pub fn record(b: bool) -> bool {
 	let state = if b { PAT_STATE_ON } else { PAT_STATE_OFF } as i32;
 	match unsafe { PAT_record(state) as u32 } {
@@ -39,6 +42,7 @@ pub fn record(b: bool) -> bool {
 	}
 }
 
+#[inline]
 pub fn state() -> bool {
 	match unsafe { PAT_record(PAT_STATE_QUERY as i32) as u32 } {
 		PAT_STATE_ON => true,
@@ -47,6 +51,7 @@ pub fn state() -> bool {
 	}
 }
 
+#[inline]
 pub fn flush_buffer() -> Result<u64, ()> {
 	let mut nbytes = 0;
 	match unsafe { PAT_flush_buffer(&mut nbytes) as u32 } {
@@ -56,6 +61,7 @@ pub fn flush_buffer() -> Result<u64, ()> {
 	}
 }
 
+#[inline]
 pub fn counters() {
 	unimplemented!();
 }
