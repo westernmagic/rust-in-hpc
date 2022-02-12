@@ -1,3 +1,8 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f8d82d927446abff9cb904cfbd0eae04b36156d7d36dbe537ee4ea0b0818f8f1
-size 139
+#![feature(asm)]
+#![feature(proc_macro_hygiene)]
+#![no_std]
+use cudars_derive::*;
+
+pub fn t() {
+    #[shared] static s: [f64; 4] = blah;
+}

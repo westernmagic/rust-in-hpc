@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e13ceed9f44f099ccaf349b888580e1f08a73a256d62e871ddd845d767773fbd
-size 317
+use proc_macro::TokenStream;
+use syn::{ItemFn, parse_macro_input};
+use quote::quote;
+
+pub fn host_impl(_attr: TokenStream, func: TokenStream) -> TokenStream {
+    let func = parse_macro_input!(func as ItemFn);
+    let result = quote! {
+        #[cfg(not(target_os = "cuda"))]
+        #func
+    };
+    result.into()
+}

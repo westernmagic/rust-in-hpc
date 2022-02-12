@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5be106a8ad4e0790f65b4001b0285ee4c6696e7343b6abb2fc637709348ee693
-size 321
+[package]
+name = "rust2fortran"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+num-complex = "*"
+
+[build-dependencies]
+cmake = "*"
+
+[dev-dependencies]
+ndarray = "*"

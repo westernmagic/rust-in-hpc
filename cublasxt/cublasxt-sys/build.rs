@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2c49f9f093437fbd1d99f4546770ad6bbe170c342e298fe5861d68ce33c6f74
-size 1103
+extern crate bindgen;
+
+use std::env;
+use std::path::PathBuf;
+
+fn main() {
+    let cuda_path = String::from(env!("CUDA_PATH"));
+    let lib = cuda_path.clone() + "/lib";
+    let include = cuda_path.clone() + "/include";
+    let header = "cublasXt.h";
+
+    println!("cargo:rustc-link-search={}", lib);
+    println!("cargo:rustc-link-lib=cublas");
+    // println!("cargo:rerun-if-changed={}", include.clone() + "/" + header);
+
+    let mut builder = bindgen::Builder::default();
+    builder = builder.clang_arg(format!("-I{}", include));
+    let bindings = builder
+        .header(include.clone() + "/" + header)
+        .whitelist_function("cublasXt.*")
+        .blacklist_type("cuFloatComplex")
+        .blacklist_type("cuDoubleComplex")
+        .rustified_enum(".*")
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .rustfmt_bindings(true)
+        .generate()
+        .expect("Unable to generate bindings");
+
+    let out_path = PathBuf::from(env::var("OUT_DIR").unwrap());
+    bindings
+        .write_to_file(out_path.join("bindings.rs"))
+        .expect("Couldn't write bindings");
+}

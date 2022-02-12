@@ -1,3 +1,27 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a196173baffafb3a9010f2f68de06d36b116a574861250d865baf97bc5ef96da
-size 581
+#!/bin/bash -l
+#SBATCH --job-name="test_mpi"
+#SBATCH --time=00:15:00
+#SBATCH --nodes=4
+#SBATCH --ntasks-per-core=1
+#SBATCH --ntasks-per-node=36
+#SBATCH --cpus-per-task=1
+#SBATCH --partition=debug
+#SBATCH --constraint=mc
+#SBATCH --hint=nomultithread
+set -euo pipefail
+IFS=$'\n\t'
+
+cargo build --release --examples
+for example in $(ls -f examples/*.rs); do
+	example=${example##*/}
+	example=${example%%.rs}
+	case "${example}" in
+		"comm_name" )
+			echo "Skipping ${example}..."
+			;;
+		* )
+			echo "Running ${example}..."
+			srun ./target/release/examples/${example}
+			;;
+	esac
+done

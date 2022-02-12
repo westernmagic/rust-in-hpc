@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:866336c24b711a4004e866ca21f75f8b033425ee07773959a350824709782c13
-size 267
+[package]
+name = "gemm_perf2"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[build-dependencies]
+cmake = "*"

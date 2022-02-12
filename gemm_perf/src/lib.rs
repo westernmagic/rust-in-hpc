@@ -1,3 +1,34 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:64bacda096ea0e38c0d83478eea0e8124e85d405d8a8d8d3b744da66c3a9336e
-size 665
+extern crate blas;
+extern crate openblas_src;
+
+#[inline]
+pub fn rust_dgemm(
+    m: u16,
+    n: u16,
+    k: u16,
+    alpha: f64,
+    a: &[f64],
+    b: &[f64],
+    beta: f64,
+    c: &mut [f64]
+) {
+    unsafe {
+        matrixmultiply::dgemm(m as usize, k as usize, n as usize, alpha, a.as_ptr(), 1, m as isize, b.as_ptr(), 1, k as isize, beta, c.as_mut_ptr(), 1, m as isize)
+    }
+}
+
+#[inline]
+pub fn blas_dgemm(
+    m: u16,
+    n: u16,
+    k: u16,
+    alpha: f64,
+    a: &[f64],
+    b: &[f64],
+    beta: f64,
+    c: &mut [f64]
+) {
+    unsafe {
+        blas::dgemm(b'N', b'N', m as i32, n as i32, k as i32, alpha, a, m as i32, b, k as i32, beta, c, m as i32);
+    }
+}

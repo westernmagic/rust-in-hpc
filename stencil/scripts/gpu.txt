@@ -1,0 +1,52 @@
+# target/release/stencil cray  fortran  laplap_openmp_target # compile error (RelWithDebInfo) / cudaErrorSymbolNotFound
+# target/release/stencil cray  fortran  inline_openmp_target # compile error (RelWithDebInfo) / cudaErrorSymbolNotFound
+# target/release/stencil cray  fortran  laplap_openacc       # compile error (RelWithDebInfo) / cudaErrorSymbolNotFound
+# target/release/stencil cray  fortran  inline_openacc       # compile error (RelWithDebInfo) / cudaErrorSymbolNotFound
+
+# target/release/stencil gnu   fortran  laplap_openmp_target # no offloading support
+# target/release/stencil gnu   fortran  inline_openmp_target # no offloading support
+# target/release/stencil gnu   fortran  laplap_openacc       # no offloading support
+# target/release/stencil gnu   fortran  inline_openacc       # no offloading support
+
+# target/release/stencil intel fortran  laplap_openmp_target # not supported
+# target/release/stencil intel fortran  inline_openmp_target # not supported
+# target/release/stencil intel fortran  laplap_openacc       # not supported
+# target/release/stencil intel fortran  inline_openacc       # not supported
+
+  target/release/stencil pgi   fortran  laplap_openmp_target
+  target/release/stencil pgi   fortran  inline_openmp_target
+# target/release/stencil pgi   fortran  laplap_openacc       # runtime error: SEGFAULT
+# target/release/stencil pgi   fortran  inline_openacc       # runtime error: SEGFAULT
+  target/release/stencil pgi   fortran  laplap_cuda
+  target/release/stencil pgi   fortran  inline_cuda
+
+# target/release/stencil cray  cpp      laplap_openmp_target # runtime error: CUDA_ERROR_INVALID_SOURCE
+# target/release/stencil cray  cpp      inline_openmp_target # runtime error: CUDA_ERROR_INVALID_SOURCE
+# target/release/stencil cray  cpp      laplap_openacc       # not supported
+# target/release/stencil cray  cpp      inline_openacc       # not supported
+# target/release/stencil cray  cpp      laplap_cuda          # runtime error: CUDA_ERROR_INVALID_CONFIGURATION -> SEGFAULT
+# target/release/stencil cray  cpp      inline_cuda          # runtime error: CUDA_ERROR_INVALID_CONFIGURATION -> SEGFAULT
+
+# target/release/stencil gnu   cpp      laplap_openmp_target # no offloading support
+# target/release/stencil gnu   cpp      inline_openmp_target # no offloading support
+# target/release/stencil gnu   cpp      laplap_openacc       # no offloading support
+# target/release/stencil gnu   cpp      inline_openacc       # no offloading support
+  target/release/stencil gnu   cpp      laplap_cuda
+  target/release/stencil gnu   cpp      inline_cuda
+
+# target/release/stencil intel cpp      laplap_openmp_target # not supported
+# target/release/stencil intel cpp      inline_openmp_target # not supported
+# target/release/stencil intel cpp      laplap_openacc       # not supported
+# target/release/stencil intel cpp      inline_openacc       # not supported
+# target/release/stencil intel cpp      laplap_cuda          # runtime error: CUDA_ERROR_INVALID_CONFIGURATION -> SEGFAULT
+# target/release/stencil intel cpp      inline_cuda          # runtime error: CUDA_ERROR_INVALID_CONFIGURATION -> SEGFAULT
+
+  target/release/stencil pgi   cpp      laplap_openmp_target
+  target/release/stencil pgi   cpp      inline_openmp_target
+# target/release/stencil pgi   cpp      laplap_openacc       # runtime error: Invalid handle
+# target/release/stencil pgi   cpp      inline_openacc       # runtime error: Invalid handle
+# target/release/stencil pgi   cpp      laplap_cuda          # ldd error: undefined symbol
+# target/release/stencil pgi   cpp      inline_cuda          # ldd error: undefined symbol
+
+  target/release/stencil rustc rs       laplap_accel         # cannot set target
+  target/release/stencil rustc rs       inline_accel         # cannot set target

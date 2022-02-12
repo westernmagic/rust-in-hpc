@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b3f146f24fac29ad652125dce10c9038ef2a089830b1fd46e50c692c05186289
-size 604
+[submodule "installing_rust/rustc-llvm-proxy"]
+	path = installing_rust/rustc-llvm-proxy
+	url = https://github.com/denzp/rustc-llvm-proxy.git
+[submodule "installing_rust/rust-ptx-linker"]
+	path = installing_rust/rust-ptx-linker
+	url = https://github.com/denzp/rust-ptx-linker.git
+[submodule "mpi/rsmpi"]
+	path = mpi/rsmpi
+	url = https://github.com/rsmpi/rsmpi.git
+[submodule "interop/cpp2rust/cmake-cargo"]
+	path = interop/cmake-cargo
+	url = https://github.com/AndrewGaspar/cmake-cargo.git
+[submodule "cscs_beamer_style"]
+	path = cscs_beamer_style
+	url = https://github.com/eth-cscs/cscs_beamer_style.git

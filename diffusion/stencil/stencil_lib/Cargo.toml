@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ac7b1a541be49d55a8eea6c08f726381cad9b71622ba37336e791b0b44d39e71
-size 449
+[package]
+name = "stencil_lib"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+ndarray = { version = "*", features = ["approx"] }
+fast_float = { path = "../fast_float" }
+approx = "*"
+
+[build-dependencies]
+cmake = "*"
+
+[dev-dependencies]
+ndarray-npy = "*"

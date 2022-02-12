@@ -1,3 +1,47 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:657341be41b17f6517d208c61787c4058789dd609f108c898997d6dc74766024
-size 939
+#include "mod.hpp"
+#include <cstddef>
+
+void add_dot_1x4(
+	std::size_t k,
+	double const * a,
+	std::size_t lda,
+	double const * b,
+	std::size_t ldb,
+	double * c,
+	std::size_t ldc
+) noexcept {
+	for (std::size_t p = 0; p < k; ++p) {
+		c[0 + ldc * 0] += a[0 + lda * p] * b[p + ldb * 0];
+	}
+
+	for (std::size_t p = 0; p < k; ++p) {
+		c[0 + ldc * 1] += a[0 + lda * p] * b[p + ldb * 1];
+	}
+
+	for (std::size_t p = 0; p < k; ++p) {
+		c[0 + ldc * 2] += a[0 + lda * p] * b[p + ldb * 2];
+	}
+
+	for (std::size_t p = 0; p < k; ++p) {
+		c[0 + ldc * 3] += a[0 + lda * p] * b[p + ldb * 3];
+	}
+}
+
+extern "C"
+void mm04(
+	std::size_t m,
+	std::size_t n,
+	std::size_t k,
+	double const * a,
+	std::size_t lda,
+	double const * b,
+	std::size_t ldb,
+	double * c,
+	std::size_t ldc
+) noexcept {
+	for (std::size_t j = 0; j < n; j += 4) {
+		for (std::size_t i = 0; i < m; ++i) {
+			add_dot_1x4(k, &a[i + lda * 0], lda, &b[0 + ldb * j], ldb, &c[i + ldc * j], ldc);
+		}
+	}
+}

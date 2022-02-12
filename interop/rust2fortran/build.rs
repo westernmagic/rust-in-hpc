@@ -1,3 +1,7 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5bfda5050b328b8078c8c350f47d5eae1211cf121d7ccf9fc52fc5f3db919576
-size 262
+fn main() {
+    let lib = cmake::build("src");
+    println!("cargo:rerun-if-changed=src/zaxpy.f");
+    println!("cargo:rustc-link-search=native={}/lib", lib.display());
+    println!("cargo:rustc-link-lib=zaxpy");
+    println!("cargo:rustc-link-lib=gfortran");
+}

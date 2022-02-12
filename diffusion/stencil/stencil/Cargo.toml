@@ -1,3 +1,15 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b77f987cadb0af173ad008fb09fd916b39a5ffefeba02d0a33ca1173e6a13935
-size 377
+[package]
+name = "stencil"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ndarray = "*"
+ndarray-npy = "*"
+anyhow = "*"
+structopt = { version = "*", features = ["paw"] }
+paw = "*"
+stencil_lib = { path = "../stencil_lib" }

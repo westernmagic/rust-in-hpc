@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f4797695e8b2acd4a37d6b692aa86ef2a60dc6e7c75e6662f4901c906b78b9ef
-size 206
+#include <cstddef>
+
+extern "C"
+void mm05(
+	std::size_t m,
+	std::size_t n,
+	std::size_t k,
+	double const * a,
+	std::size_t lda,
+	double const * b,
+	std::size_t ldb,
+	double * c,
+	std::size_t ldc
+) noexcept;

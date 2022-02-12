@@ -1,3 +1,67 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2ddd8d8bbc6e883a898d3eabf84f7958780a5e8511a895dfd9d1113c1bb7f91e
-size 1166
+cargo-features = ["named-profiles"]
+
+[package]
+name = "stencil_lib"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+# To pass custom environment variables, `links` must be set, and a `rlib` must be generated
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# [workspace]
+
+[lib]
+name = "stencil_rustc_rs"
+crate-type = ["cdylib"]
+path = "rs/lib.rs"
+
+[build-dependencies]
+anyhow = "*"
+
+[dependencies]
+ndarray = { version = "*", features = ["approx", "rayon"] }
+fast_float = { path = "../fast_float" }
+accel = "*"
+itertools = "*"
+rayon = "*"
+
+[patch.crates-io]
+ndarray = { git = "https://github.com/westernmagic/ndarray.git" }
+
+[profile.dev]
+opt-level = 0
+debug = true
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = "unwind"
+incremental = true
+codegen-units = 256
+rpath = false
+
+[profile.debug]
+inherits = "dev"
+
+[profile.release]
+opt-level = 3
+debug = false
+debug-assertions = false
+overflow-checks = false
+lto = false
+panic = "abort"
+incremental = false
+codegen-units = 1
+rpath = false
+
+[profile.relwithdebinfo]
+inherits = "release"
+opt-level = 3
+debug = true
+debug-assertions = false
+overflow-checks = false
+lto = false
+panic = "unwind"
+incremental = false
+codegen-units = 1
+rpath = false

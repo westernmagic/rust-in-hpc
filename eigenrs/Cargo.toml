@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a62af8fd05a83893b065cfedd17d56d0014bfedf2ebf9944c76825d273a64791
-size 223
+[package]
+name = "eigenrs"
+version = "0.1.0"
+authors = ["westernmagic <mswoj61@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]

@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:82c1072c3f9c91fdaeca7c944d4e6ce2e62ac36b5c2ae5f8a3de1ffd254d852f
-size 290
+#![allow(non_upper_case_globals)]
+#![allow(non_camel_case_types)]
+#![allow(non_snake_case)]
+#![allow(improper_ctypes)]
+
+use num_complex::{Complex32, Complex64};
+
+pub type cuFloatComplex = Complex32;
+pub type cuDoubleComplex = Complex64;
+
+include!(concat!(env!("OUT_DIR"), "/bindings.rs"));

@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:d26eac432ede246fe4dcef7c8342eb02c232d705129adc4228c2e484b75ea8e1
-size 418
+[package]
+name = "cudars-derive"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "*"
+syn = { version = "*", features = ["full"] }
+quote = "1.0"
+
+[dev-dependencies]
+lazy_static = { version = "*", features = ["spin_no_std"] }

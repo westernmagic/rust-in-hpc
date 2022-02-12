@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:5643621aa2b083e2e1ab0b17cb1dc2f50ff93000de1ba2c49029f7af1dea7064
-size 546
+subroutine zaxpy(a, x, nx, y, ny)
+    use iso_fortran_env
+    implicit none
+
+    complex(real64),               intent(in)    :: a
+    complex(real64), dimension(*), intent(in)    :: x
+    integer(int64),                intent(in)    :: nx
+    complex(real64), dimension(*), intent(inout) :: y
+    integer(int64),                intent(in)    :: ny
+    integer(int64)                               :: i = 1
+
+    if (nx .ne. ny) then
+        call exit(1)
+    end if
+
+    do i = 1, nx
+        y(i) = a * x(i) + y(i)
+    end do
+end subroutine zaxpy

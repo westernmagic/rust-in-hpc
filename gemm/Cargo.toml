@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e0e49f68cbae3be17cf69055ed0d107a4f90048451fe8174aefff8b9021980ca
-size 330
+[package]
+name = "simple_gemm"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+blas = "*"
+cublasxt = { path = "../cublasxt" }
+ndarray = { version = "*", features = ["blas"] }

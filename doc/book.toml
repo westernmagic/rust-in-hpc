@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:614e54146334abc0ba952805eea2bceda4dc662e1c2260549273cd3133d3aa43
-size 106
+[book]
+authors = ["Michal Sudwoj"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Rust in HPC"

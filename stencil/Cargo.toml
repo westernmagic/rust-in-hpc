@@ -1,3 +1,65 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f673b49c16d0b9e9e32240117651b5010ed544a517c969aac11d5b85e3a63a0a
-size 510
+cargo-features = ["named-profiles"]
+
+[package]
+name = "stencil"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+anyhow = "*"
+thiserror = "*"
+itertools = "*"
+rustc_version = "*"
+regex = "*"
+
+[dependencies]
+ndarray = "*"
+ndarray-npy = "*"
+anyhow = "*"
+structopt = { version = "*", features = ["paw"] }
+paw = "*"
+lazy_static = "*"
+enum-utils = "*"
+derive_more = "*"
+craypat = { path = "../craypat", optional = true }
+thiserror = "*"
+
+[profile.dev]
+opt-level = 0
+debug = true
+debug-assertions = true
+overflow-checks = true
+lto = false
+panic = "unwind"
+incremental = true
+codegen-units = 256
+rpath = false
+
+[profile.debug]
+inherits = "dev"
+
+[profile.release]
+opt-level = 3
+debug = false
+debug-assertions = false
+overflow-checks = false
+lto = false
+panic = "abort"
+incremental = false
+codegen-units = 1
+rpath = false
+
+[profile.relwithdebinfo]
+inherits = "release"
+opt-level = 3
+debug = true
+debug-assertions = false
+overflow-checks = false
+lto = false
+panic = "unwind"
+incremental = false
+codegen-units = 1
+rpath = false

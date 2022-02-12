@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:debf60ab9fa6b5fb045d8c2610933a2e72cfeaef8caaa3833430dc32b45462c1
-size 306
+[package]
+name = "cublasxt-sys"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+links = "cublas"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+num-complex = "*"
+
+[build-dependencies]
+bindgen = "*"

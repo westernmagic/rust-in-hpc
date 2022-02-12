@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:846b7cca8ec3035d4eee6b08599e93d267fa3a250e8b74d851f919fea55ee4a6
-size 545
+use rust2fortran::zaxpy_ as zaxpy;
+use ndarray::array;
+use num_complex::Complex64;
+
+fn main() {
+    let     a = Complex64::new(1.0, 0.0);
+    let     x = array![Complex64::new(1.1, 2.2), Complex64::new(3.3,  4.4),  Complex64::new(5.5, 6.6)];
+    let mut y = array![Complex64::new(7.7, 8.8), Complex64::new(9.9, 10.10), Complex64::new(11.11, 12.12)];
+
+    unsafe {
+        zaxpy(&a as *const Complex64, x.as_ptr(), &x.len() as *const usize as *const u64, y.as_mut_ptr(), &y.len() as *const usize as *const u64);
+    };
+
+    println!("{}", y);
+}
+

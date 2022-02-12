@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:784fce84f092f5313c1a08d81254b1f593e7dc8fa807684910dc8638c7dbb7aa
-size 402
+[package]
+name = "gemm_perf"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+matrixmultiply = "*"
+blas = "*"
+openblas-src = { version = "*", features = ["system"] }
+
+[dev-dependencies]
+criterion = "*"
+
+[[bench]]
+name = "benchmark"
+harness = false

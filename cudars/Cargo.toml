@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2b569c3119ccb86f53a9efed8b5c041cf9f7ad1075e33c6592ea1abc7a1c1ee9
-size 664
+[package]
+name = "cudars"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+ptx-builder = "*"
+
+[dependencies]
+cudars-derive = { path = "./cudars-derive" }
+cudars-support = { path = "./cudars-support" }
+cfg-if = "*"
+
+[target.'cfg(not(target_os = "cuda"))'.dependencies]
+rustacuda = "*"
+lazy_static = "*"
+
+[target.'cfg(target_os = "cuda")'.dependencies]
+ptx-support = { git = "https://github.com/denzp/rust-ptx-support", default_features = true }
+lazy_static = { version = "*", features = ["spin_no_std"] }

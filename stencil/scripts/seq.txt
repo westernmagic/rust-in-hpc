@@ -1,0 +1,30 @@
+  target/release/stencil cray  fortran  laplap_seq
+  target/release/stencil cray  fortran  inline_seq
+
+  target/release/stencil gnu   fortran  laplap_seq
+  target/release/stencil gnu   fortran  inline_seq
+
+  target/release/stencil intel fortran  laplap_seq
+  target/release/stencil intel fortran  inline_seq
+
+  target/release/stencil pgi   fortran  laplap_seq
+  target/release/stencil pgi   fortran  inline_seq
+
+  target/release/stencil cray  cpp      laplap_seq
+  target/release/stencil cray  cpp      inline_seq
+
+  target/release/stencil gnu   cpp      laplap_seq
+  target/release/stencil gnu   cpp      inline_seq
+
+  target/release/stencil intel cpp      laplap_seq
+  target/release/stencil intel cpp      inline_seq
+
+  target/release/stencil pgi   cpp      laplap_seq
+  target/release/stencil pgi   cpp      inline_seq
+
+  target/release/stencil rustc rs       laplap_seq
+  target/release/stencil rustc rs       laplap_seq_unchecked
+  target/release/stencil rustc rs       laplap_seq_zip
+  target/release/stencil rustc rs       inline_seq_unchecked
+  target/release/stencil rustc rs       inline_seq_fast
+  target/release/stencil rustc rs       inline_seq_fma

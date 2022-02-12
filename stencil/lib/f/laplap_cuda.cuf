@@ -1,0 +1,155 @@
+!> v0: base version
+!>
+!> Ported from stencil2d-orig.F90
+!>
+!> @author Oliver Fuhrer
+!> @author Michal Sudwoj
+!> @date 2020-07-19
+!> @licence LGPL-3.0
+module diffuse_laplap_cuda_kernels
+    contains
+        attributes(global) subroutine diffuse_laplap_cuda_kernel1(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter, iter, tmp1_field)
+            use, intrinsic :: iso_c_binding, only: c_float, c_size_t
+            implicit none
+
+            real(kind = c_float),            intent(inout) :: in_field(:, :, :)
+            real(kind = c_float),            intent(out)   :: out_field(:, :, :)
+            integer(kind = c_size_t), value, intent(in)    :: nx
+            integer(kind = c_size_t), value, intent(in)    :: ny
+            integer(kind = c_size_t), value, intent(in)    :: nz
+            integer(kind = c_size_t), value, intent(in)    :: num_halo
+            real(kind = c_float),     value, intent(in)    :: alpha
+            integer(kind = c_size_t), value, intent(in)    :: num_iter
+            integer(kind = c_size_t), value, intent(in)    :: iter
+            real(kind = c_float),            intent(out)   :: tmp1_field(:, :, :)
+
+            real(kind = c_float) :: laplap
+            integer              :: i
+            integer              :: j
+            integer              :: k
+
+            i = blockDim%x * (blockIdx%x - 1) + threadIdx%x
+            j = blockDim%y * (blockIdx%y - 1) + threadIdx%y
+            k = blockDim%z * (blockIdx%z - 1) + threadIdx%z
+
+            if ( &
+                0            .lt. k .and. k .le. nz                .and. &
+                num_halo - 1 .lt. j .and. j .le. ny + num_halo + 1 .and. &
+                num_halo - 1 .lt. i .and. i .le. nx + num_halo + 1       &
+            ) then
+                tmp1_field(i, j, k) = &
+                    -4.0_c_float * in_field(i,     j,     k) &
+                    +              in_field(i - 1, j,     k) &
+                    +              in_field(i + 1, j,     k) &
+                    +              in_field(i,     j - 1, k) &
+                    +              in_field(i,     j + 1, k)
+            end if
+        end subroutine
+
+        attributes(global) subroutine diffuse_laplap_cuda_kernel2(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter, iter, tmp1_field)
+            use, intrinsic :: iso_c_binding, only: c_float, c_size_t
+            implicit none
+
+            real(kind = c_float),            intent(inout) :: in_field(:, :, :)
+            real(kind = c_float),            intent(out)   :: out_field(:, :, :)
+            integer(kind = c_size_t), value, intent(in)    :: nx
+            integer(kind = c_size_t), value, intent(in)    :: ny
+            integer(kind = c_size_t), value, intent(in)    :: nz
+            integer(kind = c_size_t), value, intent(in)    :: num_halo
+            real(kind = c_float),     value, intent(in)    :: alpha
+            integer(kind = c_size_t), value, intent(in)    :: num_iter
+            integer(kind = c_size_t), value, intent(in)    :: iter
+            real(kind = c_float),            intent(out)   :: tmp1_field(:, :, :)
+
+            real(kind = c_float) :: laplap
+            integer              :: i
+            integer              :: j
+            integer              :: k
+
+            i = blockDim%x * (blockIdx%x - 1) + threadIdx%x
+            j = blockDim%y * (blockIdx%y - 1) + threadIdx%y
+            k = blockDim%z * (blockIdx%z - 1) + threadIdx%z
+
+            if ( &
+                0        .lt. k .and. k .le. nz            .and. &
+                num_halo .lt. j .and. j .le. ny + num_halo .and. &
+                num_halo .lt. i .and. i .le. nx + num_halo       &
+            ) then
+                laplap = &
+                    -4.0_c_float * tmp1_field(i,     j,     k) &
+                    +              tmp1_field(i - 1, j,     k) &
+                    +              tmp1_field(i + 1, j,     k) &
+                    +              tmp1_field(i,     j - 1, k) &
+                    +              tmp1_field(i,     j + 1, k)
+                if (iter /= num_iter) then
+                    in_field(i, j, k) = in_field(i, j, k) - alpha * laplap
+                else
+                    out_field(i, j, k) = in_field(i, j, k) - alpha * laplap
+                end if
+            end if
+        end subroutine
+end module
+
+subroutine diffuse_laplap_cuda(in_field, out_field, nx, ny, nz, num_halo, alpha, num_iter) bind(C)
+    use, intrinsic :: iso_c_binding, only: c_float, c_size_t, c_ptr, c_associated, c_f_pointer
+    use m_assert, only: assert
+    use cudafor
+    use diffuse_laplap_cuda_kernels
+
+    implicit none
+    ! arguments
+    type(c_ptr),              value, intent(in) :: in_field
+    type(c_ptr),              value, intent(in) :: out_field
+    integer(kind = c_size_t), value, intent(in) :: nx
+    integer(kind = c_size_t), value, intent(in) :: ny
+    integer(kind = c_size_t), value, intent(in) :: nz
+    integer(kind = c_size_t), value, intent(in) :: num_halo
+    real(kind = c_float),     value, intent(in) :: alpha
+    integer(kind = c_size_t), value, intent(in) :: num_iter
+
+    ! local
+    real(kind = c_float), pointer             :: in_field_(:, :, :)
+    real(kind = c_float), pointer             :: out_field_(:, :, :)
+    real(kind = c_float), allocatable, device :: in_field_d(:, :, :)
+    real(kind = c_float), allocatable, device :: out_field_d(:, :, :)
+    real(kind = c_float), allocatable, device :: tmp1_field_d(:, :, :)
+    real(kind = c_float)                      :: laplap
+    integer(kind = c_size_t)                  :: iter
+    integer(kind = c_size_t)                  :: i
+    integer(kind = c_size_t)                  :: j
+    integer(kind = c_size_t)                  :: k
+    type(dim3)                                :: blockDim
+    type(dim3)                                :: gridDim
+    integer                                   :: cuda_error
+
+    call assert(c_associated(in_field),  "c_associated(in_field)")
+    call assert(c_associated(out_field), "c_associated(out_field)")
+    call assert(nx > 0, "nx > 0")
+    call assert(ny > 0, "ny > 0")
+    call assert(nz > 0, "nz > 0")
+    call assert(num_halo > 0, "num_halo > 0")
+    ! call assert(.not. isnan(alpha), ".not. isnan(alpha)")
+    call assert(num_iter > 0, "num_iter > 0")
+
+    call c_f_pointer(in_field,  in_field_,  [nx + 2 * num_halo, ny + 2 * num_halo, nz])
+    call c_f_pointer(out_field, out_field_, [nx + 2 * num_halo, ny + 2 * num_halo, nz])
+    
+    allocate(in_field_d(  nx + 2 * num_halo, ny + 2 * num_halo, nz))
+    allocate(out_field_d( nx + 2 * num_halo, ny + 2 * num_halo, nz))
+    allocate(tmp1_field_d(nx + 2 * num_halo, ny + 2 * num_halo, nz))
+    in_field_d = in_field_
+
+    blockDim = dim3(1, 1, 1)
+    gridDim = dim3((nx + 2 * num_halo + blockDim%x - 1) / blockDim%x, (ny + 2 * num_halo + blockDim%y - 1) / blockDim%y, (nz + blockDim%z - 1) / blockDim%z)
+
+    do iter = 1, num_iter
+        call diffuse_laplap_cuda_kernel1<<<gridDim, blockDim>>>(in_field_d, out_field_d, nx, ny, nz, num_halo, alpha, num_iter, iter, tmp1_field_d)
+        cuda_error = cudaDeviceSynchronize()
+        call assert(cuda_error == cudaSuccess)
+        call diffuse_laplap_cuda_kernel2<<<gridDim, blockDim>>>(in_field_d, out_field_d, nx, ny, nz, num_halo, alpha, num_iter, iter, tmp1_field_d)
+        cuda_error = cudaDeviceSynchronize()
+        call assert(cuda_error == cudaSuccess)
+    end do
+
+    out_field_ = out_field_d
+end subroutine

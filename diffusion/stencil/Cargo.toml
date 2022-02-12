@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6def3b855c9a273fd87fdbe4972ff901725e18a8c664b115445e16658a457a92
-size 400
+[workspace]
+members = [
+	"stencil",
+	"stencil_lib",
+	"stencil_lib/lib/cmake-cargo/generator",
+]
+
+[profile.release]
+# lto = "thin"
+opt-level = 3
+debug = true
+# debug-assertions = false
+# overflow-checks = false
+# incremental = false
+codegen-units = 1
+
+[profile.release.build-override]
+opt-level = 3
+debug = false
+debug-assertions = false
+overflow-checks = false
+incremental = false
+codegen-units = 16

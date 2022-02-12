@@ -1,3 +1,31 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:78ec0a56063fe88cb525575faeb9681db848dee304a6bfc5b972b1726416ebb3
-size 773
+use core::arch::nvptx::*;
+use core::panic::PanicInfo;
+use crate::{print, println};
+
+#[allow(unreachable_code)]
+#[panic_handler]
+fn panic(info: &PanicInfo) -> ! {
+    unsafe {
+        print!(
+            "CUDA thread ({}, {}, {}) on block ({}, {}, {}) panicked",
+            _thread_idx_x(), _thread_idx_y(), _thread_idx_z(),
+            _block_idx_x(), _block_idx_y(), _block_idx_z()
+        );
+    }
+
+    if let Some(s) = info.payload().downcast_ref::<&str>() {
+        print!("at '{}'", s);
+    }
+
+    if let Some(location) = info.location() {
+        print!("{}:{}:{}", location.file(), location.line(), location.column());
+    }
+
+    println!();
+
+    unsafe {
+        core::intrinsics::breakpoint();
+        trap();
+        core::hint::unreachable_unchecked();
+    }
+}

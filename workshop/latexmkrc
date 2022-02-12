@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:212458d182baea7c17f986a3cc7a4f76c87d95d0d8c866fcaabb1d62ee58d45f
-size 1206
+# latexmkrc is a simple Perl script that gets sourced by latexmk.
+# $rc_file is the (possibly relative) path to the current (=this) file.
+#
+# The TEXINPUTS environment variable tells (La)TeX where to look for classes, packages and source files.
+# We set it so that our direcotries come first.
+$ENV{'TEXINPUTS'} = dirname($rc_file) . $search_path_separator . dirname($rc_file) . '/../cscs_beamer_style' .  $search_path_separator . ($ENV{'TEXINPUTS'} // '') . $search_path_separator;
+# The OSFONTDIR environment variable is where luaotfload looks for fonts.
+# We set it so that our fonts can be found.
+# http://mirrors.ctan.org/macros/luatex/generic/luaotfload/luaotfload.pdf#subsection.6.2
+# $ENV{'OSFONTDIR'} = dirname($rc_file) . '/fonts/DIN';
+$latex     = 'latex %O --shell-escape %S';
+$pdflatex  = 'pdflatex %O --shell-escape %S';
+$lualatex  = 'lualatex %O --shell-escape %S';
+$xelatex   = 'xelatex %O --shell-escape %S';
+$pdf_mode  = 4; # Compile with lualatex
+$silent    = 1; # Reduce verbosity
+$cleanup_includes_generated = 1; # Cleanup deletes extra files opened by TeX (possibly from less used packages).
+$clean_ext = 'atfi mw soc upa upb'; # Additional extensions to clean
+
+# vim: filetype=perl :

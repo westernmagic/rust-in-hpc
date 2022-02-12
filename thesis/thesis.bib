@@ -1,3 +1,992 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:066935f6183a9d84c8ca12643ee2fb91338d5e225ef381cbbd3e9ae613abbb2f
-size 54758
+
+@software{accel,
+  title = {{{accel}}},
+  author = {Teramura, Toshiki},
+  url = {https://crates.io/crates/accel},
+  urldate = {2020-09-11},
+  abstract = {GPGPU Framework for Rust},
+  file = {/home/westernmagic/Zotero/storage/JH8QQ28A/accel.html}
+}
+
+@online{AloniPathTrimmingNightly2020,
+  title = {Path {{Trimming In Nightly Rust}}},
+  author = {Aloni, Dan},
+  date = {2020-09-04},
+  journaltitle = {Dan Aloni's Blog},
+  url = {https://blog.aloni.org/posts/path-trimming-in-rust-nightly/},
+  urldate = {2020-09-07},
+  file = {/home/westernmagic/Zotero/storage/6BDSXQWI/path-trimming-in-rust-nightly.html},
+  type = {Blog}
+}
+
+@article{AndersonExperiencereportDeveloping2015,
+  title = {Experience Report: {{Developing}} the {{Servo}} Web Browser Engine Using {{Rust}}},
+  shorttitle = {Experience Report},
+  author = {Anderson, Brian and Bergstrom, Lars and Herman, David and Matthews, Josh and McAllister, Keegan and Goregaokar, Manish and Moffitt, Jack and Sapin, Simon},
+  date = {2015},
+  journaltitle = {arXiv preprint arXiv:1505.07383},
+  file = {/home/westernmagic/Zotero/storage/AUBFQ2YN/Anderson et al_2015_Experience report.pdf;/home/westernmagic/Zotero/storage/8ARN6NAL/1505.html}
+}
+
+@online{AtchesonRustFloatingpointIntensive2019,
+  title = {Rust and {{C}}++ on {{Floating}}-Point {{Intensive Code}}},
+  author = {Atcheson, Reid},
+  date = {2019-10-19},
+  journaltitle = {Math, Numerics, and Software},
+  url = {https://www.reidatcheson.com/hpc/architecture/performance/rust/c++/2019/10/19/measure-cache.html},
+  urldate = {2020-07-20},
+  abstract = {I have developed some interest in the Rust programming language. Rust is a systems programming language which means it gets out of the way of developers interested in reaching low-level internals of a system. What sets it aside from other systems languages though is: Borrow checking to guarantee memory safety Functional-like idioms (map, fold, etc) Pattern matching with an almost algebraic datatype called “enum” A much simpler memory model than C++},
+  file = {/home/westernmagic/Zotero/storage/6FJE9VDA/measure-cache.html},
+  type = {Blog}
+}
+
+@software{autocxx,
+  title = {{{autocxx}}},
+  url = {https://crates.io/crates/autocxx},
+  urldate = {2020-09-11},
+  file = {/home/westernmagic/Zotero/storage/XTVQ6DTA/autocxx.html},
+  organization = {{Google}}
+}
+
+@inproceedings{BackusFORTRANautomaticcoding1957,
+  title = {The {{FORTRAN}} Automatic Coding System},
+  booktitle = {Papers Presented at the {{February}} 26-28, 1957, Western Joint Computer Conference: {{Techniques}} for Reliability},
+  author = {Backus, J. W. and Beeber, R. J. and Best, S. and Goldberg, R. and Haibt, L. M. and Herrick, H. L. and Nelson, R. A. and Sayre, D. and Sheridan, P. B. and Stern, H. and Ziller, I. and Hughes, R. A. and Nutt, R.},
+  date = {1957-02-26},
+  pages = {188--198},
+  publisher = {{Association for Computing Machinery}},
+  location = {{Los Angeles, California}},
+  doi = {10/bn86gx},
+  url = {https://doi.org/10.1145/1455567.1455599},
+  urldate = {2020-08-06},
+  abstract = {The FORTRAN project was begun in the summer of 1954. Its purpose was to reduce by a large factor the task of preparing scientific problems for IBM's next large computer, the 704. If it were possible for the 704 to code problems for itself and produce as good programs as human coders (but without the errors), it was clear that large benefits could be achieved. For it was known that about two-thirds of the cost of solving most scientific and engineering problems on large computers was that of problem preparation. Furthermore, more than 90 per cent of the elapsed time for a problem was usually devoted to planning, writing, and debugging the program. In many cases the development of a general plan for solving a problem was a small job in comparison to the task of devising and coding machine procedures to carry out the plan. The goal of the FORTRAN project was to enable the programmer to specify a numerical procedure using a concise language like that of mathematics and obtain automatically from this specification an efficient 704 program to carry out the procedure. It was expected that such a system would reduce the coding and debugging task to less than one-fifth of the job it had been.},
+  file = {/home/westernmagic/Zotero/storage/NTHHNUKM/Backus et al_1957_The FORTRAN automatic coding system.pdf},
+  isbn = {978-1-4503-7861-1},
+  series = {{{IRE}}-{{AIEE}}-{{ACM}} '57 ({{Western}})}
+}
+
+@unpublished{BaublitzBarriersintreeRust2020,
+  title = {Barriers to In-Tree {{Rust}}},
+  author = {Baublitz, John and Desaulniers, Nick and Gaynor, Alex and Thomas, Geoffrey and Triplett, Josh and Ojeda, Miguel},
+  date = {2020-08-27},
+  url = {https://linuxplumbersconf.org/event/7/contributions/804/},
+  urldate = {2020-09-07},
+  abstract = {What would it take to have in-tree support for writing kernel code in Rust? What should Kbuild integration look like? What APIs should be the initial priorities to expose in Rust? Let's figure out if any other other questions remain (e.g., can we safely link against GCC-built kernels, and do we need to) about how to get in-tree support for Rust.
+
+Rust is a systems programming language that is particularly well-suited to the kernel: it is a "better C" in a way that matches the kernel's needs (no GC, kernel-style OO, etc.) Rust can also be of significant benefit for security - safe Rust protects against entire classes of vulnerabilities such as use-after-frees, buffer overflows, and use of uninitialized memory, which form a large percent of kernel vulnerabilities.
+
+(This session will not be an intro to the Rust language. See last year's Linux Security Summit NA talk "Linux Kernel Modules in Rust" video / slides for an overview of Rust for kernel hackers and a demo of Rust modules.)},
+  eventtitle = {Linux {{Plumbers Conference}} 2020},
+  file = {/home/westernmagic/Zotero/storage/8PTA2MV8/barriers-to-in-tree-rust.pdf}
+}
+
+@thesis{BeingessnerYouCanSpell2016,
+  title = {You {{Can}}'t {{Spell Trust Without Rust}}},
+  author = {Beingessner, Alexis Kenneth},
+  date = {2016},
+  institution = {{Carleton University}},
+  location = {{Ottawa, Canada}},
+  url = {https://curve.carleton.ca/05076cd2-c1c2-4207-9667-a3ee1af58db4},
+  abstract = {Rust is a new programming language developed by Mozilla in response to the fact that C and C++ are unsafe, inefficient, and unergonomic --particularly when applied to concurrency. Version 1.0 of Rust was released in May 2015, and appears to be performing excellently. Rust code is memory-safe by default, faster than C++, easier to maintain, and excels at concurrency. Yet little analysis exists of the semantics and expressiveness of Rust's type system. This thesis focuses on one of the core aspects of Rust's type system: ownership. Ownership is a system for expressing where and when data lives, and where and when data can be mutated. In order to understand ownership and the problems it solves, we provide a novel analysis of both in terms of trust.},
+  file = {/home/westernmagic/Zotero/storage/3F7GFHP3/Beingessner_2016_You Can't Spell Trust Without Rust.pdf;/home/westernmagic/Zotero/storage/BEHRXGQY/05076cd2-c1c2-4207-9667-a3ee1af58db4.html},
+  pagetotal = {83},
+  type = {Master's Thesis}
+}
+
+@software{bindgen,
+  title = {{{bindgen}}},
+  url = {https://crates.io/crates/bindgen},
+  urldate = {2020-09-11},
+  abstract = {Automatically generates Rust FFI bindings to C and C++ libraries.},
+  file = {/home/westernmagic/Zotero/storage/RL8RJ4C5/bindgen.html}
+}
+
+@software{Blanco-Cuaresmamarblestationbenchmarkleapfrog2018,
+  title = {{{marblestation/benchmark-leapfrog}}},
+  author = {Blanco-Cuaresma, Sergi},
+  date = {2018-06-15T10:05:50Z},
+  origdate = {2016-09-23T23:13:13Z},
+  url = {https://github.com/marblestation/benchmark-leapfrog},
+  urldate = {2020-08-11},
+  abstract = {Contribute to marblestation/benchmark-leapfrog development by creating an account on GitHub.}
+}
+
+@article{Blanco-CuaresmaWhatcanprogramming2016,
+  title = {What Can the Programming Language {{Rust}} Do for Astrophysics?},
+  author = {Blanco-Cuaresma, Sergi and Bolmont, Emeline},
+  date = {2016},
+  journaltitle = {Proceedings of the International Astronomical Union},
+  volume = {12},
+  pages = {341--344},
+  publisher = {{Cambridge University Press}},
+  doi = {10/gg7gcn},
+  file = {/home/westernmagic/Zotero/storage/WI9H2CIY/Blanco-Cuaresma_Bolmont_2016_What can the programming language Rust do for astrophysics.pdf;/home/westernmagic/Zotero/storage/D7GWWTVI/B51B6DF72B7641F2352C05A502F3D881.html},
+  number = {S325}
+}
+
+@online{blas-lapack-rs,
+  title = {{{blas-lapack-rs}} {{Wiki Home}}},
+  journaltitle = {GitHub},
+  url = {https://github.com/blas-lapack-rs/blas-lapack-rs.github.io/wiki},
+  urldate = {2020-09-11},
+  abstract = {This page gives an overview of the BLAS–LAPACK family of packages.},
+  file = {/home/westernmagic/Zotero/storage/NI6EP9WT/wiki.html},
+  langid = {english}
+}
+
+@software{cbindgen,
+  title = {{{cbindgen}}},
+  author = {Hunt, Ryan},
+  url = {https://crates.io/crates/cbindgen},
+  urldate = {2020-09-11},
+  abstract = {A tool for generating C bindings to Rust code.},
+  file = {/home/westernmagic/Zotero/storage/5KH8SFIW/cbindgen.html}
+}
+
+@article{ChoprainterviewSergeyFomel2010,
+  title = {An Interview with {{Sergey Fomel}}},
+  author = {Chopra, Satinder},
+  date = {2010-01},
+  journaltitle = {CSEG Recorder},
+  volume = {35},
+  pages = {12--18},
+  url = {https://www.csegrecorder.com/interviews/view/interview-with-sergey-fomel},
+  urldate = {2020-08-16},
+  file = {/home/westernmagic/Zotero/storage/GSZICMGM/Chopra_2010_An interview with Sergey Fomel.pdf;/home/westernmagic/Zotero/storage/LFMHRUA2/interview-with-sergey-fomel.html},
+  langid = {american},
+  number = {1}
+}
+
+@incollection{ChristadlerPerformanceProductivityNew2012,
+  title = {Performance and {{Productivity}} of {{New Programming Languages}}},
+  booktitle = {Facing the {{Multicore}} - {{Challenge II}}: {{Aspects}} of {{New Paradigms}} and {{Technologies}} in {{Parallel Computing}}},
+  author = {Christadler, Iris and Erbacci, Giovanni and Simpson, Alan D.},
+  editor = {Keller, Rainer and Kramer, David and Weiss, Jan-Philipp},
+  date = {2012},
+  pages = {24--35},
+  publisher = {{Springer}},
+  location = {{Berlin, Heidelberg}},
+  doi = {10.1007/978-3-642-30397-5_3},
+  url = {https://doi.org/10.1007/978-3-642-30397-5_3},
+  urldate = {2020-08-06},
+  abstract = {Will HPC programmers (have to) adapt to new programming languages and parallelization concepts? Many different languages are currently discussed as complements or successors to the traditional HPC programming paradigm (Fortran/C+MPI). These include both languages designed specifically for the HPC community (e.g. the partitioned global address space (PGAS) languages UPC, CAF, X10 or Chapel) and languages that allow the use of hardware accelerators (e.g. Cn for ClearSpeed accelerator boards, CellSs for IBM CELL and GPGPU languages like CUDA, OpenCL, CAPS hmpp and RapidMind).During the project “Partnership for Advanced Computing in Europe – Preparatory Phase” (PRACE-PP), developers across Europe have ported three benchmarks to more than 12 different programming languages and assessed both performance and productivity. Their results will help scientific groups to choose the optimal combination of language and hardware to efficiently tackle their scientific problems. This paper describes the framework used for this assessment and the results gathered during the study together with guidelines for interpretation.},
+  file = {/home/westernmagic/Zotero/storage/2NCP6RVC/Christadler et al_2012_Performance and Productivity of New Programming Languages.pdf},
+  isbn = {978-3-642-30397-5},
+  keywords = {Benchmark Suite,Hardware Accelerator,High Performance Computing,High Performance Computing Application,High Performance Fortran},
+  langid = {english},
+  series = {Lecture {{Notes}} in {{Computer Science}}}
+}
+
+@report{Cpp03,
+  title = {{{ISO}}/{{IEC}} 14882:2003},
+  shorttitle = {{{ISO}}/{{IEC}} 14882},
+  date = {2003-10},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/03/81/38110.html},
+  urldate = {2020-08-07},
+  abstract = {ISO/IEC 14882:2003 specifies requirements for implementations of the C++ programming language and standard library. By implication, it also defines C++ programs and their behavior.
+
+C++ is a general-purpose programming language based on the C programming language as described in ISO/IEC 9899:1990. In addition to the facilities provided by C, C++ provides additional data types, classes, templates, exceptions, namespaces, inline functions, operator overloading, function-name overloading, references, free-store management operators, and additional library facilities.},
+  file = {/home/westernmagic/Zotero/storage/NNAZMTYB/38110.html},
+  langid = {english},
+  number = {14882:2003},
+  type = {Standard}
+}
+
+@report{Cpp11,
+  title = {{{ISO}}/{{IEC}} 14882:2011},
+  shorttitle = {{{ISO}}/{{IEC}} 14882},
+  date = {2011-09},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/05/03/50372.html},
+  urldate = {2020-08-07},
+  abstract = {ISO/IEC 14882:2011 specifies requirements for implementations of the C++ programming language. The first such requirement is that they implement the language, and so ISO/IEC 14882:2011 also defines C++. Other requirements and relaxations of the first requirement appear at various places within ISO/IEC 14882:2011.
+
+C++ is a general purpose programming language based on the C programming language as specified in ISO/IEC 9899:1999. In addition to the facilities provided by C, C++ provides additional data types, classes, templates, exceptions, namespaces, operator overloading, function name overloading, references, free store management operators, and additional library facilities.},
+  file = {/home/westernmagic/Zotero/storage/QUZEWLTY/50372.html},
+  langid = {english},
+  number = {14882:2011},
+  type = {Standard}
+}
+
+@report{Cpp14,
+  title = {{{ISO}}/{{IEC}} 14882:2014},
+  shorttitle = {{{ISO}}/{{IEC}} 14882},
+  date = {2014-12},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/06/40/64029.html},
+  urldate = {2020-08-07},
+  abstract = {ISO/IEC 14882:2014 specifies requirements for implementations of the C++ programming language. The first such requirement is that they implement the language, and so this International Standard also defines C++. Other requirements and relaxations of the first requirement appear at various places within this International Standard.
+
+C++ is a general purpose programming language based on the C programming language as described in ISO/IEC 9899:1999 Programming languages ? C (hereinafter referred to as the C standard). In addition to the facilities provided by C, C++ provides additional data types, classes, templates, exceptions, namespaces, operator overloading, function name overloading, references, free store management operators, and additional library facilities.},
+  file = {/home/westernmagic/Zotero/storage/3Y3ETUV2/64029.html},
+  langid = {english},
+  number = {14882:2014}
+}
+
+@report{Cpp17,
+  title = {{{ISO}}/{{IEC}} 14882:2017},
+  shorttitle = {{{ISO}}/{{IEC}} 14882},
+  date = {2017-12},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/06/85/68564.html},
+  urldate = {2020-08-07},
+  abstract = {ISO/IEC 14882:2017 specifies requirements for implementations of the C++ programming language. The first such requirement is that they implement the language, so this document also defines C++. Other requirements and relaxations of the first requirement appear at various places within this document.
+
+C++ is a general purpose programming language based on the C programming language as described in ISO/IEC 9899:2011 Programming languages ? C (hereinafter referred to as the C standard). In addition to the facilities provided by C, C++ provides additional data types, classes, templates, exceptions, namespaces, operator overloading, function name overloading, references, free store management operators, and additional library facilities.},
+  file = {/home/westernmagic/Zotero/storage/T3NWB6G4/68564.html},
+  langid = {english},
+  number = {14882:2017},
+  type = {Standard}
+}
+
+@report{Cpp20,
+  title = {{{ISO}}/{{IEC DIS}} 14882},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/93/79358.html},
+  urldate = {2020-08-07},
+  file = {/home/westernmagic/Zotero/storage/JBCEFX52/79358.html},
+  langid = {english},
+  number = {DIS 14882},
+  type = {Standard}
+}
+
+@report{Cpp98,
+  title = {{{ISO}}/{{IEC}} 14882:1998},
+  shorttitle = {{{ISO}}/{{IEC}} 14882},
+  date = {1998-09},
+  pages = {732},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/02/58/25845.html},
+  urldate = {2020-08-07},
+  file = {/home/westernmagic/Zotero/storage/KNY8TPRX/25845.html},
+  langid = {english},
+  number = {14882:1998},
+  type = {Standard}
+}
+
+@online{CppCompilerSupport,
+  title = {C++ Compiler Support},
+  journaltitle = {C++ reference},
+  url = {https://en.cppreference.com/w/cpp/compiler_support},
+  urldate = {2020-08-07},
+  file = {/home/westernmagic/Zotero/storage/4YFBF5UI/compiler_support.html}
+}
+
+@software{crossbeam,
+  title = {{{crossbeam}}},
+  author = {Glavina, Stjepan},
+  url = {https://crates.io/crates/crossbeam},
+  urldate = {2020-09-11},
+  abstract = {Tools for concurrent programming},
+  file = {/home/westernmagic/Zotero/storage/KWMHRYVC/crossbeam.html}
+}
+
+@software{cxx,
+  title = {{{cxx}}},
+  author = {Tolnay, David},
+  url = {https://crates.io/crates/cxx},
+  urldate = {2020-09-11},
+  abstract = {Safe interop between Rust and C++},
+  file = {/home/westernmagic/Zotero/storage/KDPJXYVN/cxx.html}
+}
+
+@article{ElhageSupportingLinuxkernel2020,
+  title = {Supporting {{Linux}} Kernel Development in {{Rust}}},
+  author = {Elhage, Nelson},
+  date = {2020-08-31},
+  journaltitle = {LWN},
+  url = {https://lwn.net/SubscriberLink/829858/281103f9c6fd0dc2/},
+  urldate = {2020-09-07},
+  entrysubtype = {magazine},
+  file = {/home/westernmagic/Zotero/storage/DYDP8PWD/281103f9c6fd0dc2.html}
+}
+
+@thesis{FarnstrandParallelizationRustforkjoin2015,
+  title = {Parallelization in {{Rust}} with Fork-Join and Friends: {{Creating}} the Fork-Join Framework},
+  shorttitle = {Parallelization in {{Rust}} with Fork-Join and Friends},
+  author = {Färnstrand, Linus},
+  date = {2015},
+  institution = {{Chalmers Univerity of Technology}},
+  location = {{Gothenburg, Sweden}},
+  url = {https://odr.chalmers.se/bitstream/20.500.12380/219016/1/219016.pdf},
+  file = {/home/westernmagic/Zotero/storage/QSUSXN7E/Färnstrand_2015_Parallelization in Rust with fork-join and friends.pdf;/home/westernmagic/Zotero/storage/LPZQ9CUQ/219016.html},
+  pagetotal = {74},
+  type = {Master's Thesis}
+}
+
+@report{Fortran2003,
+  title = {{{ISO}}/{{IEC}} 1539-1:2004},
+  shorttitle = {{{ISO}}/{{IEC}} 1539-1},
+  date = {2004-11},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/03/96/39691.html},
+  urldate = {2020-08-07},
+  abstract = {ISO/IEC 1539-1:2004 specifies the form and establishes the interpretation of programs expressed in the base Fortran language. Its purpose is to promote portability, reliability, maintainability and efficient execution of Fortran programs for use on a variety of computing systems.},
+  file = {/home/westernmagic/Zotero/storage/FVFK6WF8/2004_ISO-IEC 1539-1.pdf;/home/westernmagic/Zotero/storage/V46KZNYQ/39691.html},
+  langid = {english},
+  number = {1539-1:2004},
+  type = {Standard}
+}
+
+@report{Fortran2008,
+  title = {{{ISO}}/{{IEC}} 1539-1:2010},
+  shorttitle = {{{ISO}}/{{IEC}} 1539-1},
+  date = {2010-10},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/05/04/50459.html},
+  urldate = {2020-08-07},
+  abstract = {ISO/IEC 1539-1:2010 specifies the form and establishes the interpretation of programs expressed in the base Fortran language. Its purpose is to promote portability, reliability, maintainability, and efficient execution of Fortran programs for use on a variety of computing systems.
+
+ISO/IEC 1539-1:2010 specifies
+
+ - the forms that a program written in the Fortran language may take,
+ - the rules for interpreting the meaning of a program and its data,
+ - the form of the input data to be processed by such a program, and
+ - the form of the output data resulting from the use of such a program.
+
+Except where stated otherwise, requirements and prohibitions specified by ISO/IEC 1539-1:2010 apply to programs rather than processors.},
+  file = {/home/westernmagic/Zotero/storage/VMSJPYFZ/2010_ISO-IEC 1539-1.pdf;/home/westernmagic/Zotero/storage/224A88RC/50459.html},
+  langid = {english},
+  number = {1539-1:2010}
+}
+
+@report{Fortran2018,
+  title = {{{ISO}}/{{IEC}} 1539-1:2018},
+  shorttitle = {{{ISO}}/{{IEC}} 1539-1},
+  date = {2018-11},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/07/23/72320.html},
+  urldate = {2020-08-07},
+  abstract = {Information technology — Programming languages — Fortran — Part 1: Base language},
+  file = {/home/westernmagic/Zotero/storage/5AAXZA6I/72320.html},
+  langid = {english},
+  number = {1539-1:2018}
+}
+
+@report{Fortran66,
+  title = {X3.9-1966},
+  date = {1966-03-07},
+  institution = {{ANSI}},
+  url = {https://wg5-fortran.org/ARCHIVE/Fortran66.pdf},
+  file = {/home/westernmagic/Zotero/storage/W85Q2TXF/1966_X3.pdf},
+  keywords = {⛔ No DOI found},
+  number = {X3. 9-1966}
+}
+
+@report{Fortran77,
+  title = {X3.9-1978},
+  date = {1978},
+  institution = {{ANSI}},
+  url = {https://wg5-fortran.org/ARCHIVE/Fortran77.html},
+  keywords = {⛔ No DOI found}
+}
+
+@report{Fortran90,
+  title = {{{ISO}}/{{IEC}} 1539:1991},
+  shorttitle = {{{ISO}}/{{IEC}} 1539},
+  date = {1991-07},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/00/61/6128.html},
+  urldate = {2020-08-07},
+  abstract = {Information technology — Programming languages — FORTRAN (Available in electronic form)},
+  file = {/home/westernmagic/Zotero/storage/JUESRKMR/1991_ISO-IEC 1539.pdf;/home/westernmagic/Zotero/storage/ZR2Y6KEN/6128.html},
+  langid = {english},
+  number = {1539:1991}
+}
+
+@report{Fortran95,
+  title = {{{ISO}}/{{IEC}} 1539-1:1997},
+  shorttitle = {{{ISO}}/{{IEC}} 1539-1},
+  date = {1997-12},
+  institution = {{ISO}},
+  url = {https://www.iso.org/cms/render/live/en/sites/isoorg/contents/data/standard/02/69/26933.html},
+  urldate = {2020-08-07},
+  abstract = {Information technology — Programming languages — Fortran - Part 1: Base language},
+  file = {/home/westernmagic/Zotero/storage/WD53GMNU/1997_ISO-IEC 1539-1.pdf;/home/westernmagic/Zotero/storage/BXXGZXFW/26933.html},
+  langid = {english},
+  number = {1539-1:1997},
+  type = {Standard}
+}
+
+@software{FuhrerHighPerformanceComputing2020,
+  title = {High {{Performance Computing}} for {{Weather}} and {{Climate}}},
+  author = {Fuhrer, Oliver},
+  date = {2020-06-16T22:38:02Z},
+  origdate = {2020-05-20T04:39:48Z},
+  url = {https://github.com/ofuhrer/HPC4WC},
+  urldate = {2020-08-06},
+  abstract = {High Performance Computing for Weather and Climate}
+}
+
+@inproceedings{FunkApplicationdevelopmenttime2005,
+  title = {Application of a Development Time Productivity Metric to Parallel Software Development},
+  booktitle = {Proceedings of the Second International Workshop on {{Software}} Engineering for High Performance Computing System Applications},
+  author = {Funk, Andrew and Basili, Victor and Hochstein, Lorin and Kepner, Jeremy},
+  date = {2005},
+  pages = {8--12},
+  file = {/home/westernmagic/Zotero/storage/9JYYSWDQ/Funk et al_2005_Application of a development time productivity metric to parallel software.pdf;/home/westernmagic/Zotero/storage/C9I5PUWW/1145319.html}
+}
+
+@online{FutureProgrammingLanguages,
+  title = {Future {{Of Programming Languages}}},
+  journaltitle = {Wiki Wiki Web},
+  url = {https://wiki.c2.com/?FutureOfProgrammingLanguages},
+  urldate = {2020-09-08},
+  file = {/home/westernmagic/Zotero/storage/6TPKS4BW/wiki.c2.com.html},
+  type = {Wiki}
+}
+
+@unpublished{GasparRustHPC2018,
+  title = {Rust in {{HPC}}},
+  author = {Gaspar, Andrew James},
+  date = {2018-11-28},
+  url = {https://permalink.lanl.gov/object/tr?what=info:lanl-repo/lareport/LA-UR-18-31540},
+  file = {/home/westernmagic/Zotero/storage/F7F5TKLP/Gaspar_2018_Rust in HPC.pdf}
+}
+
+@unpublished{GaynorWritingLinuxKernel2019,
+  title = {Writing {{Linux Kernel Modules}} in {{Safe Rust}}},
+  author = {Gaynor, Alex and Thomas, Geoffrey},
+  date = {2019-08-20},
+  url = {https://lssna19.sched.com/event/RHaT/writing-linux-kernel-modules-in-safe-rust-geoffrey-thomas-two-sigma-investments-alex-gaynor-alloy},
+  urldate = {2020-09-07},
+  abstract = {With 65\% of recent Linux kernel vulnerabilities being the result of memory unsafety (buffer overflows, pointers used after being freed, etc.) and not logic errors, both kernel developers and downstream users have wondered whether it's possible to use a safer language than C for kernel development. This talk will explore the presenters' work building a framework for writing kernel modules in Rust and accessing kernel APIs in safe Rust. In particular, the talk will discuss some of the challenges of building binary-compatible kernel modules in Rust, techniques for working with existing C code, and how to design safe bindings over raw kernel APIs. It will also discuss advantages and difficulties for integrating Rust in upstream kernel development and possible directions the upstream kernel community could go.},
+  eventtitle = {Linux {{Security Summit}} 2019},
+  file = {/home/westernmagic/Zotero/storage/T9STV43P/Gaynor and Thomas - Linux Kernel Modules in Rust.pdf},
+  venue = {{San Diego, California, USA}}
+}
+
+@article{Greggflamegraph2016,
+  title = {The Flame Graph},
+  author = {Gregg, Brendan},
+  date = {2016},
+  journaltitle = {Communications of the ACM},
+  volume = {59},
+  pages = {48--57},
+  publisher = {{ACM New York, NY, USA}},
+  doi = {10/gg9zj6},
+  file = {/home/westernmagic/Zotero/storage/F978Z7G8/2909476.html},
+  number = {6}
+}
+
+@online{HahnOneProgramWritten2019,
+  title = {One {{Program Written}} in {{Python}}, {{Go}}, and {{Rust}}},
+  author = {Hahn, Nicolas},
+  date = {2019-07-01},
+  journaltitle = {Nicolas Hahn},
+  url = {http://nicolas-hahn.com/python/go/rust/programming/2019/07/01/program-in-python-go-rust/},
+  urldate = {2020-08-06},
+  abstract = {Image differentiation in three languages},
+  file = {/home/westernmagic/Zotero/storage/KQVE9YWI/program-in-python-go-rust.html}
+}
+
+@online{HeislerStateGPGPURust2018,
+  title = {The {{State}} of {{GPGPU}} in {{Rust}}},
+  author = {Heisler, Brook},
+  date = {2018-08-08},
+  journaltitle = {bheisler.github.io},
+  url = {https://bheisler.github.io/post/state-of-gpgpu-in-rust/},
+  urldate = {2020-08-06},
+  abstract = {At work a few months ago, we started experimenting with GPU-acceleration. My boss asked if I was interested. I didn’t know anything about programming GPUs, so of course I said “Heck yes, I’m interested!“. I needed to learn about GPUs in a hurry, and that led to my GPU Path Tracer series. That was a lot of fun, but it showed me that CUDA support in Rust is pretty poor.},
+  file = {/home/westernmagic/Zotero/storage/2X5KNQPR/state-of-gpgpu-in-rust.html},
+  langid = {american},
+  type = {Blog}
+}
+
+@inproceedings{HolkGPUProgrammingRust2013,
+  title = {{{GPU Programming}} in {{Rust}}: {{Implementing High}}-{{Level Abstractions}} in a {{Systems}}-{{Level Language}}},
+  shorttitle = {{{GPU Programming}} in {{Rust}}},
+  booktitle = {2013 {{IEEE International Symposium}} on {{Parallel Distributed Processing}}, {{Workshops}} and {{Phd Forum}}},
+  author = {Holk, Eric and Pathirage, Milinda and Chauhan, Arun and Lumsdaine, Andrew and Matsakis, Nicholas D.},
+  date = {2013-05},
+  pages = {315--324},
+  issn = {null},
+  doi = {10/ggnfgn},
+  abstract = {Graphics processing units (GPUs) have the potential to greatly accelerate many applications, yet programming models remain too low level. Many language-based solutions to date have addressed this problem by creating embedded domain-specific languages that compile to CUDA or OpenCL. These targets are meant for human programmers and thus are less than ideal compilation targets. LLVM recently gained a compilation target for PTX, NVIDIA's low-level virtual instruction set for GPUs. This lower-level representation is more expressive than CUDA and OpenCL, making it easier to support advanced language features such as abstract data types or even certain closures. We demonstrate the effectiveness of this approach by extending the Rust programming language with support for GPU kernels. At the most basic level, our extensions provide functionality that is similar to that of CUDA. However, our approach seamlessly integrates with many of Rust's features, making it easy to build a library of ergonomic abstractions for data parallel computing. This approach provides the expressiveness of a high level GPU language like Copperhead or Accelerate, yet also provides the programmer the power needed to create new abstractions when those we have provided are insufficient.},
+  eventtitle = {2013 {{IEEE International Symposium}} on {{Parallel Distributed Processing}}, {{Workshops}} and {{Phd Forum}}},
+  file = {/home/westernmagic/Zotero/storage/2XE27NGE/Holk et al_2013_GPU Programming in Rust.pdf;/home/westernmagic/Zotero/storage/A7N3CVC2/6650903.html},
+  keywords = {CUDA,data parallel computing,embedded domain specific languages,embedded systems,ergonomic abstractions,Generators,GPU programming,GPUs,graphics processing units,Graphics processing units,Harlan,high level abstractions,instruction sets,Instruction sets,Kernel,Libraries,LLVM,Mozilla Rust,NVIDIA,OpenCL,parallel architectures,parallel processing,Programming,PTX,rust programming language,systems level language,virtual instruction set}
+}
+
+@online{IBMArchivesJohn2003,
+  title = {{{IBM Archives}}: {{John Backus}}},
+  shorttitle = {{{IBM Archives}}},
+  date = {2003-01-23},
+  url = {https://www.ibm.com/ibm/history/exhibits/builders/builders_backus.html},
+  urldate = {2020-08-07},
+  abstract = {John Backus was the developer of FORTRAN, for years one of the best known and most used programming systems in the world.},
+  file = {/home/westernmagic/Zotero/storage/Z3UCBLLZ/builders_backus.html},
+  langid = {american},
+  type = {TS200}
+}
+
+@online{KapplerRust2020Scientific2019,
+  title = {Rust 2020: {{Scientific Rust}}},
+  author = {Kappler, Willi},
+  date = {2019-11-13},
+  origdate = {2019-11-04T18:31:01Z},
+  url = {https://github.com/willi-kappler/rust_2020/Readme.md},
+  urldate = {2020-08-20}
+}
+
+@book{KlabnikRustProgrammingLanguage2019,
+  title = {The {{Rust Programming Language}} ({{Covers Rust}} 2018)},
+  author = {Klabnik, Steve and Nichols, Carol},
+  date = {2019-08},
+  publisher = {{No Starch Press}},
+  url = {https://doc.rust-lang.org/stable/book/},
+  urldate = {2020-08-05},
+  abstract = {The Rust Programming Language is the official book on Rust: an open source systems programming language that helps you write faster, more reliable software. Rust offers control over low-level details (such as memory usage) in combination with high-level ergonomics, eliminating the hassle traditionally associated with low-level languages.},
+  file = {/home/westernmagic/Zotero/storage/46FA6NF4/Klabnik_Nichols_2019_The Rust Programming Language (Covers Rust 2018).pdf;/home/westernmagic/Zotero/storage/QKZ6UBJC/books.html},
+  isbn = {978-1-71850-044-0},
+  pagetotal = {560}
+}
+
+@article{KnuthStructuredProgramminggo1974,
+  title = {Structured {{Programming}} with Go to {{Statements}}},
+  author = {Knuth, Donald E.},
+  date = {1974-12-01},
+  journaltitle = {ACM Computing Surveys},
+  shortjournal = {ACM Comput. Surv.},
+  volume = {6},
+  pages = {261--301},
+  issn = {0360-0300},
+  doi = {10/dbkfbk},
+  url = {https://doi.org/10.1145/356635.356640},
+  urldate = {2020-08-16},
+  file = {/home/westernmagic/Zotero/storage/UQUYD96A/Knuth_1974_Structured Programming with igo to-i Statements.pdf},
+  number = {4}
+}
+
+@online{LesinskiSpeedRustvs,
+  title = {Speed of {{Rust}} vs {{C}}},
+  author = {Lesiński, Kornel},
+  journaltitle = {Kornel.Lesiński},
+  url = {https://kornel.ski/rust-c-speed},
+  urldate = {2020-07-20},
+  file = {/home/westernmagic/Zotero/storage/MIPHA4M4/rust-c-speed.html},
+  type = {Blog}
+}
+
+@online{LindgrenComparingparallelRust2020,
+  title = {Comparing Parallel {{Rust}} and {{C}}++},
+  author = {Lindgren, Matias},
+  date = {2020-03-23},
+  url = {https://parallel-rust-cpp.github.io/},
+  urldate = {2020-07-22},
+  file = {/home/westernmagic/Zotero/storage/F88F7U5K/parallel-rust-cpp.github.io.html}
+}
+
+@software{matrixmultiply,
+  title = {{{matrixmulitply}}},
+  author = {Sverdrup, Ulrik "bluss"},
+  url = {https://crates.io/crates/matrixmultiply},
+  urldate = {2020-09-11},
+  abstract = {General matrix multiplication for f32 and f64 matrices. Operates on matrices with general layout (they can use arbitrary row and column stride). Detects and uses AVX or SSE2 on x86 platforms transparently for higher performance. Uses a microkernel strategy, so that the implementation is easy to parallelize and optimize.},
+  file = {/home/westernmagic/Zotero/storage/S57BS92I/matrixmultiply.html}
+}
+
+@online{McKeoghRewritingFORTRANSoftware2020,
+  title = {Rewriting {{FORTRAN Software In Rust}}},
+  author = {McKeogh, Ferdia},
+  date = {2020-07-14T00:00:00+00:00},
+  journaltitle = {mckeogh.tech},
+  url = {https://mckeogh.tech/post/shallow-water/},
+  urldate = {2020-07-22},
+  abstract = {github.com/rse-standrewscs/shallow-water TL;DR: Rewriting isn’t always bad but it probably was here, Amdahl’s Law is important and memory bandwidth is a potential bottleneck when doing many simple double precision math operations
+Introduction As part of an Undergraduate Research Assistant Scheme in my first year of university I was tasked with parallelising a piece of shallow water simulation software written in FORTRAN by Dr David Dritschel of the Vortex Dynamics Research Group, under supervision of Dr.},
+  file = {/home/westernmagic/Zotero/storage/WCC3C6EV/shallow-water.html},
+  type = {Blog}
+}
+
+@software{McKeoghrsestandrewscsshallowwater2020,
+  title = {{{rse-standrewscs/shallow-water}}},
+  author = {McKeogh, Ferdia},
+  date = {2020-07-19T10:34:06Z},
+  origdate = {2019-10-01T14:15:19Z},
+  url = {https://github.com/rse-standrewscs/shallow-water},
+  urldate = {2020-07-22},
+  abstract = {3D shallow water code. Contribute to rse-standrewscs/shallow-water development by creating an account on GitHub.},
+  organization = {{Research Software Group at the School of Computer Science, University of St Andrews}}
+}
+
+@software{nalgebra,
+  title = {{{nalgebra}}},
+  author = {Crozet, Sébastien},
+  url = {https://crates.io/crates/nalgebra},
+  urldate = {2020-09-11},
+  abstract = {Linear algebra library with transformations and statically-sized or dynamically-sized matrices.},
+  file = {/home/westernmagic/Zotero/storage/G7FVI9FS/nalgebra.html}
+}
+
+@software{ndarray,
+  title = {{{ndarray}}},
+  author = {Sverdrup, Ulrik "bluss"},
+  url = {https://crates.io/crates/ndarray},
+  urldate = {2020-09-11},
+  abstract = {An n-dimensional array for general elements and for numerics. Lightweight array views and slicing; views support chunking and splitting.},
+  file = {/home/westernmagic/Zotero/storage/RLIQ8IVQ/ndarray.html}
+}
+
+@software{netcdf,
+  title = {{{netcdf}}},
+  url = {https://crates.io/crates/netcdf},
+  urldate = {2020-09-11},
+  abstract = {High-level NetCDF bindings for Rust},
+  file = {/home/westernmagic/Zotero/storage/3E66P3IG/netcdf.html}
+}
+
+@online{NowellArewelearning,
+  title = {Are We Learning Yet?},
+  author = {Nowell, Anthony},
+  url = {https://www.arewelearningyet.com/},
+  urldate = {2020-09-11},
+  abstract = {Rust is a systems programming language, but is it a machine learning language?},
+  file = {/home/westernmagic/Zotero/storage/RSSJZNBX/www.arewelearningyet.com.html}
+}
+
+@software{num-complex,
+  title = {{{num-complex}}},
+  url = {https://crates.io/crates/num-complex},
+  urldate = {2020-09-11},
+  file = {/home/westernmagic/Zotero/storage/UNH3XZVP/num-complex.html}
+}
+
+@inproceedings{OfenbeckApplyingrooflinemodel2014,
+  title = {Applying the Roofline Model},
+  booktitle = {2014 {{IEEE International Symposium}} on {{Performance Analysis}} of {{Systems}} and {{Software}} ({{ISPASS}})},
+  author = {Ofenbeck, Georg and Steinmann, Ruedi and Caparros, Victoria and Spampinato, Daniele G. and Püschel, Markus},
+  date = {2014-03},
+  pages = {76--85},
+  doi = {10/gg68r2},
+  abstract = {The recently introduced roofline model plots the performance of executed code against its operational intensity (operations count divided by memory traffic). It also includes two platform-specific performance ceilings: the processor's peak performance and a ceiling derived from the memory bandwidth, which is relevant for code with low operational intensity. The model thus makes more precise the notions of memory- and compute-bound and, despite its simplicity, can provide an insightful visualization of bottlenecks. As such it can be valuable to guide manual code optimization as well as in education. Unfortunately, to date the model has been used almost exclusively with back-of-the-envelope calculations and not with measured data. In this paper we show how to produce roofline plots with measured data on recent generations of Intel platforms. We show how to accurately measure the necessary quantities for a given program using performance counters, including threaded and vectorized code, and for warm and cold cache scenarios. We explain the measurement approach, its validation, and discuss limitations. Finally, we show, to this extent for the first time, a set of roofline plots with measured data for common numerical functions on a variety of platforms and discuss their possible uses.},
+  eventtitle = {2014 {{IEEE International Symposium}} on {{Performance Analysis}} of {{Systems}} and {{Software}} ({{ISPASS}})},
+  file = {/home/westernmagic/Zotero/storage/WLBGRNGB/Ofenbeck et al_2014_Applying the roofline model.pdf;/home/westernmagic/Zotero/storage/5KGMSA5U/6844463.html},
+  keywords = {back-of-the-envelope calculations,Bandwidth,bottleneck visualization,Bridges,cache storage,cold cache scenarios,Computational modeling,compute-bound,executed code performance,Intel platforms,manual code optimization,memory bandwidth,memory traffic,memory-bound,Microarchitecture,multi-threading,operation count,operational intensity,performance counters,platform-specific performance ceilings,processor peak performance,program compilers,Q measurement,Radiation detectors,roofline model,roofline plots,software performance evaluation,source code (software),threaded code,Time measurement,vectorized code,warm cache scenarios}
+}
+
+@article{PaduaFORTRANcompiler2000,
+  title = {The {{FORTRAN I}} Compiler},
+  author = {Padua, David},
+  date = {2000},
+  journaltitle = {Computing in Science \& Engineering},
+  volume = {2},
+  pages = {70--75},
+  publisher = {{IEEE}},
+  doi = {10/fc8qm5},
+  url = {https://ieeexplore.ieee.org/document/814661/},
+  abstract = {The Fortran I compiler was the first demonstration that it is possible to automaticallygenerate efficient machine code from high-level languages. It has thus been enormouslyinfluential. This article presents a brief description of the techniques used in the Fortran Icompiler for the parsing of expressions, loop optimization, and register allocation.},
+  file = {/home/westernmagic/Zotero/storage/B8ADMWP2/814661.html},
+  number = {1}
+}
+
+@software{parking-lot,
+  title = {{{parking\_lot}}},
+  author = {family=Antras, given=Amanieu, prefix=d', useprefix=true},
+  url = {https://crates.io/crates/parking_lot},
+  urldate = {2020-09-11},
+  abstract = {More compact and efficient implementations of the standard synchronization primitives.},
+  file = {/home/westernmagic/Zotero/storage/5AIKMGSM/parking_lot.html}
+}
+
+@online{PartridgeRustMachineLearning2019,
+  title = {Rust for {{Machine Learning}}: {{SIMD}}, {{BLAS}}, and {{Lapack}}},
+  shorttitle = {Rust for {{Machine Learning}}},
+  author = {Partridge, Erik},
+  date = {2019-03-16},
+  journaltitle = {Erik Partridge},
+  url = {https://www.erikpartridge.com/2019-03/rust-ml-simd-blas-lapack},
+  urldate = {2020-07-17},
+  abstract = {Using Rust for machine learning still has a ways to go. It's possible to overcome some of the limitations, however, by getting familiar with the lower-level libraries that drive high-performance linear algebra computing, namely, SIMD, BLAS, and Lapack.},
+  file = {/home/westernmagic/Zotero/storage/2I5ZH35C/rust-ml-simd-blas-lapack.html},
+  langid = {english},
+  type = {Blog}
+}
+
+@thesis{PerezRustperformanceAlgorithmic2017,
+  title = {Rust and {{C}}++ Performance on the {{Algorithmic Lovasz Local Lemma}}},
+  author = {Perez, Anthony},
+  date = {2017-12},
+  institution = {{Stanford University}},
+  location = {{Stanford}},
+  url = {https://cs242.stanford.edu/f17/assets/projects/2017/aperez8.pdf},
+  abstract = {The performance and ease of use of a programming language are two major considerations fordevelopers when choosing the appropriate language for a project. This work compares C++ andRust through the lens of performance and usability in both serial and concurrent contexts, anduses the algorithmic Lovasz Local Lemma as a test-bed. Performance is evaluated quantitativelythrough run time statistics collected over different instances of K-SAT while usability is evaluatedqualitatively. It was found that although both languages make trade-offs with respect to usability,Rust outperforms C++ in both serial and parallel contexts. From this the author concludes that,regardless of the performance of the optimal implementation in each language, non-optimal butmore practical implementations of similar development effort seem to result in higher performancecode in Rust, likely due to Rust’s ownership and safety features.},
+  file = {/home/westernmagic/Zotero/storage/GHUR6FPQ/PEREZ_2017_Rust and C++ performance on the Algorithmic Lovasz Local Lemma.pdf},
+  pagetotal = {9},
+  type = {Project Report}
+}
+
+@report{PizDaintone2017,
+  title = {"{{Piz}}  {{Daint}}",  One  of  the  Most  Powerful  Supercomputers  in  the  World},
+  date = {2017},
+  institution = {{Swiss National Supercomputing Centre}},
+  location = {{Lugano, Switzerland}},
+  url = {https://www.cscs.ch/fileadmin/user_upload/contents_publications/factsheets/piz_daint/FSPizDaint_Final_2018_EN.pdf},
+  abstract = {A  hardware  upgrade  in  the  final  quarter  of  2016  saw  "Piz  Daint",  Europe’s  most  powerful  super-computer, more than triple its computing perfor-mance. ETH Zurich invested around CHF 40 million in the upgrade, so that simulations, data analysis and  visualisation  can  be  performed  more  effi-ciently than ever before.},
+  file = {/home/westernmagic/Zotero/storage/WDTZP6DJ/FSPizDaint_Final_2018_EN.pdf}
+}
+
+@software{ptx-builder,
+  title = {{{ptx-builder}}},
+  author = {Zariaiev, Denys},
+  url = {https://crates.io/crates/ptx-builder},
+  urldate = {2020-09-11},
+  abstract = {NVPTX build helper},
+  file = {/home/westernmagic/Zotero/storage/KCETMXL8/ptx-builder.html}
+}
+
+@software{ptx-support,
+  title = {{{denzp/rust-ptx-support}}},
+  author = {Zariaiev, Denys},
+  date = {2020-03-03T11:49:37Z},
+  origdate = {2018-09-17T23:02:25Z},
+  url = {https://github.com/denzp/rust-ptx-support},
+  urldate = {2020-09-11},
+  abstract = {Experiments with achieving better ergonomics in Rust CUDA workflow},
+  keywords = {cuda,rust}
+}
+
+@software{rayon,
+  title = {{{rayon}}},
+  url = {https://crates.io/crates/rayon},
+  urldate = {2020-09-11},
+  abstract = {Simple work-stealing parallelism for Rust},
+  file = {/home/westernmagic/Zotero/storage/4CJAS5NZ/rayon.html}
+}
+
+@software{rustacuda,
+  title = {{{rustacuda}}},
+  author = {Heisler, Brook},
+  url = {https://crates.io/crates/rustacuda},
+  urldate = {2020-09-11},
+  abstract = {CUDA Driver API Wrapper},
+  file = {/home/westernmagic/Zotero/storage/KWQUS4AE/rustacuda.html}
+}
+
+@software{rustfmt,
+  title = {{{rust-lang/rustfmt}}},
+  date = {2020-09-11T03:16:56Z},
+  origdate = {2015-03-07T22:51:56Z},
+  url = {https://github.com/rust-lang/rustfmt},
+  urldate = {2020-09-11},
+  abstract = {Format Rust code. Contribute to rust-lang/rustfmt development by creating an account on GitHub.},
+  keywords = {codeformatter,formatter,rust,rustfmt},
+  organization = {{The Rust Programming Language}}
+}
+
+@software{rustup,
+  title = {{{rust-lang/rustup}}},
+  date = {2020-09-11T05:13:32Z},
+  origdate = {2015-09-26T04:54:49Z},
+  url = {https://github.com/rust-lang/rustup},
+  urldate = {2020-09-11},
+  abstract = {The Rust toolchain installer. Contribute to rust-lang/rustup development by creating an account on GitHub.},
+  organization = {{The Rust Programming Language}}
+}
+
+@software{SduwojFixedLLVMpath,
+  title = {Fixed {{LLVM}} Path Search by Westernmagic · {{Pull Request}} \#13 · Denzp/Rustc-Llvm-Proxy},
+  author = {Sduwoj, Michal},
+  url = {https://github.com/denzp/rustc-llvm-proxy/pull/13},
+  urldate = {2020-09-11},
+  abstract = {While searching for LLVM, we might encounter other LLVM libraries (eg. if LLVM was compiled to a static library, libLLVMAnalysis.a, etc.), which will then be wrongly returned.
+This patch makes sure...},
+  file = {/home/westernmagic/Zotero/storage/27W73T3K/13.html}
+}
+
+@software{Smirnovhdf5,
+  title = {{{hdf5}}},
+  author = {Smirnov, Ivan},
+  url = {https://crates.io/crates/hdf5},
+  urldate = {2020-09-11},
+  abstract = {Thread-safe Rust bindings for the HDF5 library.},
+  file = {/home/westernmagic/Zotero/storage/3R5Q4U9Y/hdf5.html}
+}
+
+@inproceedings{spack,
+  title = {The {{Spack}} Package Manager: Bringing Order to {{HPC}} Software Chaos},
+  shorttitle = {The {{Spack}} Package Manager},
+  booktitle = {{{SC}}'15: {{Proceedings}} of the {{International Conference}} for {{High Performance Computing}}, {{Networking}}, {{Storage}} and {{Analysis}}},
+  author = {Gamblin, Todd and LeGendre, Matthew and Collette, Michael R. and Lee, Gregory L. and Moody, Adam and family=Supinski, given=Bronis R., prefix=de, useprefix=true and Futral, Scott},
+  date = {2015},
+  pages = {1--12},
+  publisher = {{IEEE}},
+  doi = {10/gf7tmd},
+  file = {/home/westernmagic/Zotero/storage/QYTDY4C8/Gamblin et al_2015_The Spack package manager.pdf;/home/westernmagic/Zotero/storage/5LZK79TQ/7832814.html}
+}
+
+@software{Steinbuschmpi,
+  title = {{{mpi}}},
+  author = {Steinbusch, Benedikt and Gaspar, Andrew James},
+  url = {https://crates.io/crates/mpi},
+  urldate = {2020-09-11},
+  abstract = {Message Passing Interface bindings for Rust},
+  file = {/home/westernmagic/Zotero/storage/2BU86YWP/mpi.html}
+}
+
+@book{StroustrupProgrammingLanguage1985,
+  title = {The {{C}}++ {{Programming Language}}},
+  author = {Stroustrup, Bjarne},
+  date = {1985},
+  edition = {1st},
+  publisher = {{Addison-Wesley}},
+  abstract = {Here is the definitive reference and guide to the C++ programming language, which was designed and implemented by author Bjarne Stroustrup. C++ is the result of years of experiments and research at AT\&T Bell Laboratories to create a successor to C. It is already heavily used in many AT\&T Bell Laboratories' projects.
+
+C++ is a superset of C that retains the efficiency and notational convenience of C, while providing facilities for:
+
+ - type checking
+ - data abstraction
+ - operator overloading
+ - object-oriented programming 
+
+This book contains the tutorial and explanatory material necessary to allow a serious programmer to learn C++ and to complete real projects. The text is intended for computer science students and professional programmers who want to learn about this latest development of the C programming language.},
+  isbn = {0-201-12078-X}
+}
+
+@online{StroustrupStroustrupFAQ,
+  title = {Stroustrup: {{FAQ}}},
+  author = {Stroustrup, Bjarne},
+  url = {https://www.stroustrup.com/bs_faq.html#really-say-that},
+  urldate = {2020-08-05},
+  file = {/home/westernmagic/Zotero/storage/5TFJC55T/bs_faq.html}
+}
+
+@software{SudwojFixeddyntrait2020,
+  title = {{{Fixed dyn trait object deprecation warnings}}},
+  author = {Sudwoj, Michal},
+  date = {2020-06-20},
+  url = {https://github.com/AndrewGaspar/corrosion/pull/21},
+  urldate = {2020-09-11},
+  file = {/home/westernmagic/Zotero/storage/4EAXMCFN/21.html}
+}
+
+@software{SudwojFixedLLVMpath2020,
+  title = {{{Fixed LLVM path search}}},
+  author = {Sudwoj, Michal},
+  date = {2020-06-01},
+  url = {https://github.com/denzp/rustc-llvm-proxy/pull/13},
+  urldate = {2020-09-11},
+  abstract = {While searching for LLVM, we might encounter other LLVM libraries (eg. if LLVM was compiled to a static library, libLLVMAnalysis.a, etc.), which will then be wrongly returned.
+This patch makes sure...},
+  file = {/home/westernmagic/Zotero/storage/S3MC28F3/13.html}
+}
+
+@software{SudwojNVPTXsupportnew2020,
+  title = {{{NVPTX support for new asm!}}},
+  author = {Sudwoj, Michal},
+  date = {2020-05-30},
+  url = {https://github.com/rust-lang/rust/pull/72439},
+  urldate = {2020-08-07},
+  abstract = {This PR implements the new asm! syntax for the nvptx64-nvidia-cuda target.
+r? @Amanieu},
+  file = {/home/westernmagic/Zotero/storage/E6ZZ5QEA/72439.html}
+}
+
+@software{SudwojProperlyquotepaths2020,
+  title = {{{Properly quote paths}}},
+  author = {Sudwoj, Michal},
+  date = {2020-06-20},
+  url = {https://github.com/AndrewGaspar/corrosion/pull/22},
+  urldate = {2020-09-11},
+  abstract = {Support spaces in paths},
+  file = {/home/westernmagic/Zotero/storage/3X8TNHNC/22.html}
+}
+
+@software{SudwojRustaddednvptx2020,
+  title = {{{Rust: added nvptx variant}}},
+  shorttitle = {Rust},
+  author = {Sudwoj, Michal},
+  date = {2020-09-08},
+  url = {https://github.com/spack/spack/pull/18209},
+  urldate = {2020-09-11},
+  file = {/home/westernmagic/Zotero/storage/PGHBQK7X/18209.html}
+}
+
+@software{Sverdrupblussmatrixmultiply2020,
+  title = {{{bluss/matrixmultiply}}},
+  author = {Sverdrup, Ulrik "bluss"},
+  date = {2020-06-22T16:27:41Z},
+  origdate = {2016-03-28T21:08:24Z},
+  url = {https://github.com/bluss/matrixmultiply},
+  urldate = {2020-08-11},
+  abstract = {General matrix multiplication of f32 and f64 matrices in Rust. Supports matrices with general strides.},
+  keywords = {rust,rust-sci}
+}
+
+@online{Sverdrupgemmrabbithole2016,
+  title = {{{gemm}}: A Rabbit Hole},
+  author = {Sverdrup, Ulrik "bluss"},
+  date = {2016-03-28},
+  journaltitle = {bluss' rust bursts},
+  url = {https://bluss.github.io/rust/2016/03/28/a-gemmed-rabbit-hole/},
+  urldate = {2020-08-11},
+  file = {/home/westernmagic/Zotero/storage/5WH7ULD4/a-gemmed-rabbit-hole.html},
+  type = {Blog}
+}
+
+@online{TIOBEIndexAugust2020,
+  title = {{{TIOBE Index}} for {{August}} 2020},
+  date = {2020-08},
+  url = {https://www.tiobe.com/tiobe-index/},
+  urldate = {2020-08-07},
+  abstract = {The TIOBE Programming Community index is an indicator of the popularity of programming languages. The index is updated once a month. The ratings are based on the number of skilled engineers world-wide, courses and third party vendors. Popular search engines such as Google, Bing, Yahoo!, Wikipedia, Amazon, YouTube and Baidu are used to calculate the ratings. It is important to note that the TIOBE index is not about the best programming language or the language in which most lines of code have been written.},
+  file = {/home/westernmagic/Zotero/storage/HDBCX9IW/tiobe-index.html}
+}
+
+@book{TrefethenFiniteDifferenceSpectral1996,
+  title = {Finite {{Difference}} and {{Spectral Methods}} for {{Ordinary}} and {{Partial Differential Equations}}},
+  author = {Trefethen, Lloyd N.},
+  date = {1996},
+  url = {http://people.maths.ox.ac.uk/trefethen/pdetext.html},
+  urldate = {2020-08-16},
+  file = {/home/westernmagic/Zotero/storage/TFNYXK56/pdetext.html},
+  pagetotal = {325}
+}
+
+@article{WallichFortranForever1991,
+  title = {Fortran {{Forever}}},
+  author = {Wallich, Paul},
+  date = {1991-07},
+  journaltitle = {Scientific American},
+  doi = {10.1038/scientificamerican0791-112},
+  url = {https://www.scientificamerican.com/article/fortran-forever/},
+  urldate = {2020-08-06},
+  abstract = {Is it still the language of choice for science?},
+  entrysubtype = {magazine},
+  file = {/home/westernmagic/Zotero/storage/QBIAEXFJ/fortran-forever.html},
+  issue = {July 1991},
+  langid = {english}
+}
+
+@thesis{WilkensEvaluationperformanceproductivity2015,
+  title = {Evaluation of Performance and Productivity Metrics of Potential Programming Languages in the {{HPC}} Environment},
+  author = {Wilkens, Florian},
+  date = {2015-04-28},
+  origdate = {2014-11-14T22:55:13Z},
+  institution = {{Universiy of Hamburg}},
+  url = {https://github.com/1wilkens/thesis-ba},
+  urldate = {2020-08-05},
+  abstract = {This thesis aims to analyze new programming languages in the context of HPC. In contrast to many other evaluations the focus is not only on performance but also on developer productivity metrics. The two new languages Go and Rust are compared with C as it is one of the two commonly used languages in HPC next to Fortran.
+
+The base for the evaluation is a shortest path calculation based on real world geographical data which is parallelized for shared memory concurrency. An implementation of this concept was written in all three languages to compare multiple productivity and performance metrics like \textbackslash textbf\{execution time\}, \textbackslash textbf\{tooling support\}, \textbackslash textbf\{memory consumption\} and \textbackslash textbf\{development time\} across different phases.
+
+Although the results are not comprehensive enough to invalidate C as a leading language in \textbackslash gls\{hpc\} they clearly show that both Rust and Go offer tremendous \textbackslash textbf\{productivity gain\} compared to C with \textbackslash textbf\{similar performance\}. Additional work is required to further validate these results as future reseach topics are listed at the end of the thesis.},
+  file = {/home/westernmagic/Zotero/storage/69UX54X9/Wilkens_2015_Evaluation of performance and productivity metrics of potential programming.pdf},
+  pagetotal = {78},
+  type = {Bachelor's thesis}
+}
+
+@article{XueHighordermonotonicnumerical2000,
+  title = {High-Order Monotonic Numerical Diffusion and Smoothing},
+  author = {Xue, Ming},
+  date = {2000},
+  journaltitle = {Monthly Weather Review},
+  volume = {128},
+  pages = {2853--2864},
+  doi = {10/chzjb2},
+  file = {/home/westernmagic/Zotero/storage/8NP68LII/104663.html},
+  number = {8}
+}
+
+

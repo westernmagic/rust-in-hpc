@@ -1,3 +1,6 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6054dbace419e43eec33a9fe56c8786471313d21e1cdda495236aa6215714721
-size 283
+# ToDo
+
+ - [ ] move to [official Rust](https://github.com/spack/spack/blob/develop/var/spack/repos/builtin/packages/rust/package.py) spack recipe
+ - [x] report llvm-proxy path bug upstream
+ - [x] report cmake-cargo dyn deprecation upstream
+ - [x] report cmake-cargo space path fixes

@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:e386ef320fe918d572e871b108805338008fe6c241151012912dddbf3c56c348
-size 277
+[package]
+name = "cudars-support"
+version = "0.1.0"
+authors = ["Michal Sudwoj <msudwoj@student.ethz.ch>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[build-dependencies]
+ptx-builder = "*"
+
+[dependencies]

@@ -1,3 +1,13 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cf29dc6761aa9276462ae6b4310add0f9d6d6041aac96d04898a2616684c5d16
-size 249
+#![cfg(target_os = "cuda")]
+#![feature(stdsimd, alloc_error_handler, core_intrinsics)]
+#![no_std]
+
+extern crate alloc as core_alloc;
+mod alloc;
+mod print;
+mod panic;
+
+pub use core_alloc::format;
+pub use alloc::*;
+pub use panic::*;
+pub use print::*;

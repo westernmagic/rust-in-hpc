@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:88f4fef3659bcc3f4dec7386d151e2ee1e94639e8db2807a4cc3610293b92474
-size 306
+cmake_minimum_required (VERSION 3.10)
+project (fortran2rust LANGUAGES Fortran)
+
+set (CMAKE_Fortran_FORMAT FREE)
+
+list (APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/../cmake-cargo/cmake")
+set (CARGO_DEV_MODE ON CACHE INTERNAL "")
+
+include (Cargo)
+add_crate (Cargo.toml)
+add_subdirectory (examples)

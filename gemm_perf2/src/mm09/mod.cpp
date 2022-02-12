@@ -1,3 +1,76 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b3bf46945f4f988ff7f9952d99b85eb90c9569876091bede5a8ec3efc0a47458
-size 1874
+#include "mod.hpp"
+#include <cstddef>
+
+void add_dot_1x4(
+	std::size_t k,
+	double const * a,
+	std::size_t lda,
+	double const * b,
+	std::size_t ldb,
+	double * c,
+	std::size_t ldc
+) noexcept {
+	double c_00_reg = 0;
+	double c_01_reg = 0;
+	double c_02_reg = 0;
+	double c_03_reg = 0;
+	double const * b_p0_ptr = &b[0 + ldb * 0];
+	double const * b_p1_ptr = &b[0 + ldb * 1];
+	double const * b_p2_ptr = &b[0 + ldb * 2];
+	double const * b_p3_ptr = &b[0 + ldb * 3];
+
+	for (std::size_t p = 0; p < k; p += 4) {
+		double a_0p_reg = a[0 + lda * (p + 0)];
+		c_00_reg += a_0p_reg * (*b_p0_ptr + 0);
+		c_01_reg += a_0p_reg * (*b_p1_ptr + 0);
+		c_02_reg += a_0p_reg * (*b_p2_ptr + 0);
+		c_03_reg += a_0p_reg * (*b_p3_ptr + 0);
+
+		a_0p_reg = a[0 + lda * (p + 1)];
+		c_00_reg += a_0p_reg * (*b_p0_ptr + 1);
+		c_01_reg += a_0p_reg * (*b_p1_ptr + 1);
+		c_02_reg += a_0p_reg * (*b_p2_ptr + 1);
+		c_03_reg += a_0p_reg * (*b_p3_ptr + 1);
+
+		a_0p_reg = a[0 + lda * (p + 2)];
+		c_00_reg += a_0p_reg * (*b_p0_ptr + 2);
+		c_01_reg += a_0p_reg * (*b_p1_ptr + 2);
+		c_02_reg += a_0p_reg * (*b_p2_ptr + 2);
+		c_03_reg += a_0p_reg * (*b_p3_ptr + 2);
+
+		a_0p_reg = a[0 + lda * (p + 3)];
+		c_00_reg += a_0p_reg * (*b_p0_ptr + 3);
+		c_01_reg += a_0p_reg * (*b_p1_ptr + 3);
+		c_02_reg += a_0p_reg * (*b_p2_ptr + 3);
+		c_03_reg += a_0p_reg * (*b_p3_ptr + 3);
+
+		b_p0_ptr += 4;
+		b_p1_ptr += 4;
+		b_p2_ptr += 4;
+		b_p3_ptr += 4;
+	}
+
+	c[0 + ldc * 0] += c_00_reg;
+	c[0 + ldc * 1] += c_01_reg;
+	c[0 + ldc * 2] += c_02_reg;
+	c[0 + ldc * 3] += c_03_reg;
+}
+
+extern "C"
+void mm09(
+	std::size_t m,
+	std::size_t n,
+	std::size_t k,
+	double const * a,
+	std::size_t lda,
+	double const * b,
+	std::size_t ldb,
+	double * c,
+	std::size_t ldc
+) noexcept {
+	for (std::size_t j = 0; j < n; j += 4) {
+		for (std::size_t i = 0; i < m; ++i) {
+			add_dot_1x4(k, &a[i + lda * 0], lda, &b[0 + ldb * j], ldb, &c[i + ldc * j], ldc);
+		}
+	}
+}

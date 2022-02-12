@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6eefe923e6506303d2ac5857b8a36de2b72e33fa020e3886b8c62cf2101ffd80
-size 538
+use core::arch::nvptx::{malloc, free, trap};
+use core_alloc::alloc::{Layout, GlobalAlloc};
+
+pub struct CudaAllocator;
+
+unsafe impl GlobalAlloc for CudaAllocator {
+    unsafe fn alloc(&self, layout: Layout) -> *mut u8 {
+        malloc(layout.size()) as *mut u8
+    }
+
+    unsafe fn dealloc(&self, ptr: *mut u8, _layout: Layout) {
+        free(ptr as *mut _);
+    }
+}
+
+#[alloc_error_handler]
+fn alloc_error_handler(_layout: Layout) -> ! {
+    unsafe { trap() }
+}
+
+#[global_allocator]
+static GLOBAL_ALLOCATOR: CudaAllocator = CudaAllocator;

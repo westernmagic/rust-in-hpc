@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:35e51f03034f37aad9612fa680ae4c63c8f3874843b20387f4cbecd92383421b
-size 193
+#include <cstddef>
+#include <complex>
+
+extern "C" void zaxpy(std::complex<double> const * a, std::complex<double> const * x, std::size_t nx, std::complex<double> * y, std::size_t ny) noexcept;

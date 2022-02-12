@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7ab803c8397b1744e4d7bc16e15931ec462e80bb951b82d7cd1fd7e88b91fcaf
-size 232
+# list (REMOVE_ITEM CMAKE_CONFIGURATION_TYPES MinSizeRel)
+# list (APPEND CMAKE_CONFIGURATION_TYPES Fast)
+
+add_library (OpenMP  INTERFACE IMPORTED)
+add_library (OpenACC INTERFACE IMPORTED)
+
+include (Fortran_FLAGS)
+include (CXX_FLAGS)
+include (CUDA_FLAGS)
+
+# vim : filetype=cmake noexpandtab tabstop=2 softtabs=2 :

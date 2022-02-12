@@ -1,3 +1,11 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:10e019899544be427df91289e6249114208768b3b4f2384a60e409f7e11d96c4
-size 492
+--- rustc-llvm-proxy/src/path.rs	2020-03-09 11:09:32.810756406 +0100
++++ rustc-llvm-proxy2/src/path.rs	2020-03-09 10:56:47.977837955 +0100
+@@ -61,7 +61,7 @@
+     match read_dir(directory) {
+         Ok(files) => files
+             .filter_map(Result::ok)
+-            .find(|file| file.file_name().to_string_lossy().starts_with("libLLVM"))
++            .find(|file| file.file_name().to_string_lossy().starts_with("libLLVM."))
+             .map(|file| file.path()),
+ 
+         Err(_) => None,

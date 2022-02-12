@@ -1,0 +1,28 @@
+  target/release/stencil cray  fortran  laplap_openmp
+  target/release/stencil cray  fortran  inline_openmp
+
+  target/release/stencil gnu   fortran  laplap_openmp
+  target/release/stencil gnu   fortran  inline_openmp
+
+  target/release/stencil intel fortran  laplap_openmp
+  target/release/stencil intel fortran  inline_openmp
+
+  target/release/stencil pgi   fortran  laplap_openmp
+  target/release/stencil pgi   fortran  inline_openmp
+
+  target/release/stencil cray  cpp      laplap_openmp
+  target/release/stencil cray  cpp      inline_openmp
+
+  target/release/stencil gnu   cpp      laplap_openmp
+  target/release/stencil gnu   cpp      inline_openmp
+
+  target/release/stencil intel cpp      laplap_openmp
+  target/release/stencil intel cpp      inline_openmp
+
+  target/release/stencil pgi   cpp      laplap_openmp
+  target/release/stencil pgi   cpp      inline_openmp
+
+  target/release/stencil rustc rs       laplap_par_zip
+  target/release/stencil rustc rs       inline_par_zip
+  target/release/stencil rustc rs       laplap_par_axis_zip
+  target/release/stencil rustc rs       inline_par_axis_zip
